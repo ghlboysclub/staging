@@ -729,7 +729,8 @@
       var on = function () { try { return localStorage.getItem('GHL_FD_NEWUI') !== '0'; } catch (e) { return true; } };   // staging defaults to the NEW ui; ?newui=0 shows the old one
       window.addEventListener('message', function (e) {
         var d = e.data || {}; if (e.origin.indexOf('googleusercontent.com') === -1 && e.origin.indexOf('script.google.com') === -1) return;
-        if (d.type === 'ghl-inset-request') { try { e.source.postMessage({ type: 'ghl-newui', on: on() }, e.origin); } catch (x) {} }
+        if (d.type === 'ghl-inset-request') { try { e.source.postMessage({ type: 'ghl-newui', on: on() }, e.origin); } catch (x) {}
+          var tn = new URLSearchParams(location.search).get('test'); if (tn && !window.__stgTested) { window.__stgTested = 1; setTimeout(function () { try { e.source.postMessage({ type: 'ghl-test', name: tn }, e.origin); } catch (x) {} }, 7000); } }   /* ?test=tabs: automated tab-bar test 7 s after the app is ready */
       });
     })();
 
