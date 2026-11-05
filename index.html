@@ -1,0 +1,734 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Boys Club">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#f2f2f7" media="(prefers-color-scheme: light)">
+  <meta name="robots" content="noindex, nofollow">
+  <title>GHL Boys Club (STAGING)</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="apple-mobile-web-app-title" content="BC Staging">
+  <script>
+    /* STAGING ONLY: this page shares its origin (ghlboysclub.github.io) with production, so every localStorage / sessionStorage key is
+       prefixed STG_ — nothing written here can be read by the live front door, and the live device key / cached app copy is not used here. */
+    (function () {
+      var P = 'STG_', S = Storage.prototype, g = S.getItem, s = S.setItem, r = S.removeItem;
+      S.getItem = function (k) { return g.call(this, P + k); };
+      S.setItem = function (k, v) { return s.call(this, P + k, v); };
+      S.removeItem = function (k) { return r.call(this, P + k); };
+    })();
+  </script>
+  <link rel="apple-touch-startup-image" media="(device-width: 440px) and (device-height: 956px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: dark)" href="splash/1320x2868-dark.png">
+  <link rel="apple-touch-startup-image" media="(device-width: 440px) and (device-height: 956px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: light)" href="splash/1320x2868-light.png">
+  <link rel="apple-touch-startup-image" media="(device-width: 402px) and (device-height: 874px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: dark)" href="splash/1206x2622-dark.png">
+  <link rel="apple-touch-startup-image" media="(device-width: 402px) and (device-height: 874px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: light)" href="splash/1206x2622-light.png">
+  <link rel="apple-touch-startup-image" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: dark)" href="splash/1290x2796-dark.png">
+  <link rel="apple-touch-startup-image" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: light)" href="splash/1290x2796-light.png">
+  <link rel="apple-touch-startup-image" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: dark)" href="splash/1179x2556-dark.png">
+  <link rel="apple-touch-startup-image" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: light)" href="splash/1179x2556-light.png">
+  <link rel="apple-touch-startup-image" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: dark)" href="splash/1284x2778-dark.png">
+  <link rel="apple-touch-startup-image" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: light)" href="splash/1284x2778-light.png">
+  <link rel="apple-touch-startup-image" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: dark)" href="splash/1170x2532-dark.png">
+  <link rel="apple-touch-startup-image" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: light)" href="splash/1170x2532-light.png">
+  <link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: dark)" href="splash/1125x2436-dark.png">
+  <link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: light)" href="splash/1125x2436-light.png">
+  <link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait) and (prefers-color-scheme: dark)" href="splash/828x1792-dark.png">
+  <link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait) and (prefers-color-scheme: light)" href="splash/828x1792-light.png">
+  <link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: dark)" href="splash/1242x2688-dark.png">
+  <link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: light)" href="splash/1242x2688-light.png">
+  <link rel="apple-touch-startup-image" media="(device-width: 360px) and (device-height: 780px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: dark)" href="splash/1080x2340-dark.png">
+  <link rel="apple-touch-startup-image" media="(device-width: 360px) and (device-height: 780px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: light)" href="splash/1080x2340-light.png">
+  <link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait) and (prefers-color-scheme: dark)" href="splash/750x1334-dark.png">
+  <link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait) and (prefers-color-scheme: light)" href="splash/750x1334-light.png">
+  <script>
+    // Front door start-up: the app-shaped loading screen is drawn at once (Google takes a few seconds to load the app),
+    // in the theme and account type used last time, and stays until the app says it is ready.
+    (function () {
+      var h = document.documentElement, t = '', r = '';
+      try { t = localStorage.getItem('GHL_FD_THEME') || ''; r = localStorage.getItem('GHL_FD_ROLE') || ''; } catch (e) {}
+      if (!t) t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) ? 'light' : 'dark';
+      h.setAttribute('data-theme', t);
+      // Android colours its own top/bottom bars from theme-color: use the app's theme from the start (a light phone setting gave a white strip under a dark app)
+      var tc = t === 'light' ? '#f2f2f7' : '#000000';
+      document.querySelectorAll('meta[name="theme-color"]').forEach(function (m) { m.setAttribute('content', tc); m.removeAttribute('media'); });
+      // Someone signed in on this device → the app-shaped loading screen; nobody (e.g. after logout) → a plain launch
+      // screen with the logo, so a dashboard skeleton never shows before the Sign In screen
+      // A home-screen icon keeps the address it was added with (…?k=key) for ever, so after a sign-out the old key
+      // still arrives: a key that was signed out on this device counts as no key (straight to the Sign In screen).
+      var urlKey = (location.search.match(/[?&]k=([^&]*)/) || [])[1] || '';
+      try { urlKey = decodeURIComponent(urlKey); } catch (e) {}
+      var signedOut = '';
+      try { signedOut = localStorage.getItem('GHL_SIGNED_OUT_KEY') || ''; } catch (e) {}
+      var hasKey = !!urlKey && urlKey !== signedOut;
+      try { if (localStorage.getItem('GHL_DEVICE_KEY')) hasKey = true; } catch (e) {}
+      window.__fdSignedOut = signedOut;
+      h.classList.add(hasKey ? 'boot' : 'fd-launch');
+      // signed in: the logo first (like an iPhone app opening), then the app-shaped loading screen
+      if (hasKey) { h.classList.add('fd-logo'); setTimeout(function () { h.classList.remove('fd-logo'); }, 900); }
+      window.__fdSavedTheme = (function () { try { return localStorage.getItem('GHL_FD_THEME') || ''; } catch (e) { return ''; } })();
+      // iPhone/iPad Safari: the toolbar floats over the page, so the app runs underneath it (other phones: no)
+      var ua = navigator.userAgent || '';
+      if (/iP(hone|ad|od)/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1)) h.classList.add('fd-ios');
+      if (window.navigator.standalone === true || (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches)) h.classList.add('fd-standalone');
+      if (r === 'partner') h.classList.add('boot-partner');
+      // reopening on another page (reload, or within 6 h like the app): that page's loading-screen shape, not the Dashboard's
+      try { var pg = sessionStorage.getItem('GHL_FD_PAGE') || ''; if (!pg) { var lp = JSON.parse(localStorage.getItem('GHL_FD_PAGE') || 'null'); if (lp && Date.now() - lp.t < 6 * 3600e3) pg = lp.page || ''; }
+        var kd = pg === 'financial-position' ? 'fp' : pg === 'wise-balances' ? 'wb' : /^(general|preferences)$/.test(pg) ? 'set' : (pg && pg !== 'dashboard' && pg !== 'account') ? 'list' : '';
+        if (kd) document.documentElement.classList.add('sk-pg-' + kd);
+        window.__skPage = pg || 'dashboard'; } catch (e) {}
+    })();
+  </script>
+  <title>GHL Boys Club</title>
+  <link rel="icon" href="favicon.svg?v=424" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png?v=424">
+  <link rel="icon" type="image/png" sizes="512x512" href="icon-512.png?v=424">
+  <style>
+    /* The app fills the whole screen. Google's "created by an Apps Script user" bar is only added when the
+       app is opened directly, not when it is shown inside another page. */
+    html, body { margin: 0; background: #000; }
+    html.fd-ios body { min-height: 100vh; min-height: 100lvh; }
+    @media (prefers-color-scheme: light) { html, body { background: #f2f2f7; } }
+    @media (min-width: 769px) { html, body { background: #1e1e1e; } }
+    @media (min-width: 769px) and (prefers-color-scheme: light) { html, body { background: #f5f5f7; } }
+    iframe { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; height: 100dvh; border: 0; display: block; }   /* exactly the visible screen */
+    html.fd-ios iframe { position: absolute; height: 100lvh; }   /* iPhone Safari: also under the floating toolbar */
+    /* iPhone Safari from the very first frame (before any script runs): the app and its loading screen are as tall as the
+       page area + Safari's toolbar, so no band ever shows below the loading screen (the script fine-tunes it right after) */
+    html.fd-ios:not(.fd-standalone) iframe { height: calc(100lvh + 58px); }
+    html.fd-ios:not(.fd-standalone) body { min-height: calc(100lvh + 58px); }
+    /* +160px below the screen: when Safari's pull-to-refresh pushes the page down while it reloads, the loading screen still reaches the bottom (it left a band) */
+    html.fd-ios:not(.fd-standalone) #bootScreen { bottom: auto !important; height: calc(100lvh + 58px + 160px) !important; }
+    html.fd-ios:not(.fd-standalone) #bootScreen .bs-search, html.fd-ios:not(.fd-standalone) #bootScreen .bs-bolt { bottom: calc(14px + 100lvh + 58px - 100dvh + 160px) !important; }
+    html.fd-ios.fd-standalone iframe { position: fixed; }   /* runs under Safari's floating toolbar, like a normal page */
+    /* the front door itself never scrolls or shifts: if iPhone nudges it (e.g. after the keyboard closes), taps inside
+       the app land above the finger. Only the app inside scrolls. */
+    html.fd-standalone, html.fd-standalone body { overflow: hidden; overscroll-behavior: none; touch-action: manipulation; }
+    html.fd-standalone body { position: fixed; inset: 0; }
+    /* iPhone home-screen app (measured 16 Oct, iPhone SE): the screen is 667 tall (vh 667) but the page box is only 647
+       (innerHeight 647, the status bar is taken off at the BOTTOM), so a body pinned with inset:0 cut the app off 20pt
+       above the bottom = the band. The body is now as tall as the screen. */
+    html.fd-ios.fd-standalone, html.fd-ios.fd-standalone body { height: 100vh; }
+    html.fd-ios.fd-standalone body { bottom: auto; }
+    /* in Safari the page behaves like a normal page, so it runs under Safari's floating toolbar (like any website) */
+    /* v534: iOS 26/27 blurs the top ~40 pt of a Home Screen web app (scroll edge effect, no switch for it; an opaque strip did not help):
+       there the loading screen's top bar sits 16 pt lower, like the app's */
+    html.fd-ios.fd-standalone.boot:not(.boot-partner) body #bootScreen .sk-ios:not(#_):not(#__) { padding-top: calc(16px + env(safe-area-inset-top, 0px)) !important; }
+    #fdProbeL, #fdProbeD { position: fixed; top: 0; left: 0; width: 1px; visibility: hidden; pointer-events: none; }
+    #fdProbeL { height: 100lvh; } #fdProbeD { height: 100dvh; }
+    /* Home-screen app on iPhone: the page height leaves out the status bar, so the app stopped short and a strip
+       showed at the bottom. Add the status-bar height back (only in this mode; Safari itself is unchanged). */
+    @media (display-mode: standalone) {
+      html.fd-ios iframe { bottom: auto; height: calc(100vh + env(safe-area-inset-top)); }
+    }
+    /* ---------- start-up loading screen (exact copy of the app's own; see markup) ---------- */
+    #bootScreen { display: none; }
+    html.boot #loginContainer, html.boot #resumeNote { visibility: hidden !important; }
+    html.boot #bootScreen {
+      display: block; position: fixed; inset: 0; z-index: 50; overflow: hidden; pointer-events: none; box-sizing: border-box;
+      --bs-win: #000; --bs-group: #1c1c1e; --bs-side: #262626; --bs-fill: rgba(255,255,255,0.07); --bs-hi: rgba(255,255,255,0.17); --bs-line: rgba(255,255,255,0.09);
+      background: var(--bs-win);
+    }
+    html.boot[data-theme="light"] #bootScreen { --bs-win: #f2f2f7; --bs-group: #fff; --bs-side: #ebebed; --bs-fill: rgba(0,0,0,0.06); --bs-hi: rgba(0,0,0,0.02); --bs-line: rgba(0,0,0,0.08); }
+    #bootScreen * { box-sizing: border-box; }
+    @keyframes bsSweep { 0% { background-position: 100% 0; } 100% { background-position: -100% 0; } }
+    #bootScreen i { display: block; flex: 0 0 auto; border-radius: 7px; background-image: linear-gradient(90deg, var(--bs-fill) 0 35%, var(--bs-hi) 50%, var(--bs-fill) 65% 100%);
+      background-size: 200% 100%; animation: bsSweep 1.6s linear infinite; }
+    #bootScreen span { flex: 1 1 auto; }
+    #bootScreen .bs-a-desk, #bootScreen .bs-a-phone, #bootScreen .bs-p-desk, #bootScreen .bs-p-phone { display: none; }
+    #bootScreen .bs-c { width: 36px; height: 36px; border-radius: 50%; }
+
+    /* phones (≤768px) */
+    @media (max-width: 768px) {
+      html.boot:not(.boot-partner) #bootScreen .bs-a-phone, html.boot.boot-partner #bootScreen .bs-p-phone { display: flex; }
+      #bootScreen .bs-a-phone, #bootScreen .bs-p-phone { flex-direction: column; gap: 14px; height: 100%; padding: calc(14px + env(safe-area-inset-top)) 12px 0; }
+      #bootScreen .bs-a-phone > *, #bootScreen .bs-p-phone > * { flex-shrink: 0; }   /* never squeezed (same sizes as the app) */
+      #bootScreen .bs-a-phone > div:last-of-type, #bootScreen .bs-p-phone > div:last-of-type { flex: 1 0 auto; margin-bottom: -60px; }   /* no empty strip at the bottom (the last card, never the ⚡ / search placeholders) */
+      #bootScreen .bs-p-phone { padding-left: calc(2.5vw + 6px); padding-right: calc(2.5vw + 6px); }
+      #bootScreen .bs-bar { display: flex; align-items: center; gap: 4px; height: 52px; padding: 0 8px; border-radius: 26px; background: var(--bs-group); border: 0.5px solid var(--bs-line); }
+      #bootScreen .bs-pill { width: 64px; height: 32px; border-radius: 16px; margin-left: 6px; }
+      #bootScreen .bs-p-phone .bs-bar { padding-left: 16px; }
+      #bootScreen .bs-pt { width: 120px; height: 18px; border-radius: 6px; }
+      #bootScreen .bs-list { border-radius: 18px; background: var(--bs-group); overflow: hidden; border: 0.5px solid var(--bs-line); }
+      #bootScreen .bs-list > div { display: grid; grid-template-columns: 36px 1fr 88px; grid-template-rows: auto auto; column-gap: 12px; row-gap: 6px; align-items: center;
+        padding: 11px 14px; min-height: 56px; border-bottom: 0.5px solid var(--bs-line); }
+      #bootScreen .bs-list > div:last-child { border-bottom: none; }
+      #bootScreen .bs-ic { grid-row: 1 / 3; width: 36px; height: 36px; border-radius: 9px; }
+      #bootScreen .bs-l1 { height: 12px; width: 60%; }
+      #bootScreen .bs-l2 { grid-column: 2; height: 9px; width: 40%; }
+      #bootScreen .bs-amt { grid-column: 3; grid-row: 1; height: 13px; }
+      #bootScreen .bs-card { border-radius: 18px; background: var(--bs-group); border: 0.5px solid var(--bs-line); padding: 18px 12px 6px; display: flex; flex-direction: column; gap: 10px; flex: 0 0 auto; overflow: hidden; }
+      #bootScreen .bs-ct { width: 225px; max-width: 50%; height: 16px; margin: 0 6px 6px; border-radius: 6px; }
+      #bootScreen .bs-a-phone .bs-card { margin-top: 8px; flex: 1 1 0; min-height: 0; margin-bottom: 12px; gap: 18px; }   /* fills to 12px above the bottom, like the app */
+      #bootScreen .bs-a-phone .bs-ct { margin-bottom: 4px; }
+      #bootScreen .bs-tx { height: 88px; border-radius: 14px; position: relative; flex-shrink: 0; }
+      #bootScreen .bs-pr { height: 56px; border-radius: 14px; }
+      #bootScreen .bs-p-phone .bs-list > div { grid-template-columns: 36px 1fr 96px; }
+      /* same see-through grey boxes as the app's phone loading screen */
+      #bootScreen .bs-bar, #bootScreen .bs-list, #bootScreen .bs-card { background: rgba(127,127,127,0.10); border-color: rgba(127,127,127,0.18); }
+      #bootScreen .bs-p-phone .bs-bar, #bootScreen .bs-p-phone .bs-list, #bootScreen .bs-p-phone .bs-card { background: rgba(127,127,127,0.12); }
+      #bootScreen .bs-list > div { border-bottom-color: rgba(127,127,127,0.18); }
+      #bootScreen .bs-search, #bootScreen .bs-bolt { background: rgba(127,127,127,0.16); border-color: rgba(127,127,127,0.22); }
+      #bootScreen .bs-tx, #bootScreen .bs-pr { background-color: rgba(127,127,127,0.06); border: 0.5px solid rgba(127,127,127,0.16); }
+      #bootScreen .bs-tx::before { content: ''; position: absolute; left: 14px; top: 14px; width: 30px; height: 30px; border-radius: 50%; background: rgba(127,127,127,0.22); }
+      #bootScreen .bs-tx::after { content: ''; position: absolute; left: 54px; right: 14px; top: 18px; height: 54px;
+        background: linear-gradient(rgba(127,127,127,0.24), rgba(127,127,127,0.24)) 0 0 / 46% 13px no-repeat,
+                    linear-gradient(rgba(127,127,127,0.24), rgba(127,127,127,0.24)) 100% 0 / 32% 13px no-repeat,
+                    linear-gradient(rgba(127,127,127,0.15), rgba(127,127,127,0.15)) 0 100% / 34% 10px no-repeat,
+                    linear-gradient(rgba(127,127,127,0.18), rgba(127,127,127,0.18)) 100% 100% / 22% 20px no-repeat; }
+      #bootScreen .bs-pr { position: relative; }
+      #bootScreen .bs-pr::after { content: ''; position: absolute; left: 14px; right: 14px; top: 50%; height: 13px; margin-top: -6.5px;
+        background: linear-gradient(rgba(127,127,127,0.24), rgba(127,127,127,0.24)) 0 0 / 34% 13px no-repeat,
+                    linear-gradient(rgba(127,127,127,0.24), rgba(127,127,127,0.24)) 100% 0 / 30% 13px no-repeat; }
+      #bootScreen .bs-p-phone .bs-card { padding: 16px 12px 16px; gap: 10px; }
+      #bootScreen .bs-p-phone .bs-ct { width: 46%; max-width: none; height: 18px; margin: 0 4px 4px; }
+      #bootScreen .bs-search, #bootScreen .bs-bolt { position: fixed; bottom: calc(14px + env(safe-area-inset-bottom)); height: 50px; border-radius: 25px; border: 0.5px solid var(--bs-line); }
+      #bootScreen .bs-search { left: 20px; right: 80px; }
+      #bootScreen .bs-bolt { right: 20px; width: 50px; }
+    }
+
+    /* computers (>768px) */
+    @media (min-width: 769px) {
+      html.boot #bootScreen { --bs-win: #1e1e1e; --bs-group: #2b2b2b; }
+      html.boot[data-theme="light"] #bootScreen { --bs-win: #f5f5f7; --bs-group: #fff; }
+      html.boot:not(.boot-partner) #bootScreen .bs-a-desk, html.boot.boot-partner #bootScreen .bs-p-desk { display: flex; }
+      /* admin: sidebar + toolbar + 6 cards + table */
+      #bootScreen .bs-a-desk { height: 100%; }
+      #bootScreen .bs-side { position: relative; width: 260px; flex: 0 0 260px; height: 100%; padding: 24px 16px; background: var(--bs-side); box-shadow: 0.5px 0 0 var(--bs-line); overflow: hidden; }
+      #bootScreen .bs-logo { width: 180px; height: 44px; border-radius: 12px; margin: 0 0 22px 6px; }
+      #bootScreen .bs-ni { height: 28px; border-radius: 8px; margin-bottom: 5px; }
+      #bootScreen .bs-grp { margin-top: 20px; }
+      #bootScreen .bs-gt { width: 80px; height: 10px; margin: 0 0 10px 12px; }
+      #bootScreen .bs-prof { position: absolute; left: 0; right: 0; bottom: 0; display: flex; align-items: center; gap: 12px; padding: 24px 24px 28px;
+        background: linear-gradient(transparent, var(--bs-side) 24px); }
+      #bootScreen .bs-prof > div { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+      #bootScreen .bs-av { width: 40px; height: 40px; border-radius: 50%; }
+      #bootScreen .bs-pl1 { height: 13px; width: 75%; }
+      #bootScreen .bs-pl2 { height: 10px; width: 90%; }
+      #bootScreen .bs-main { flex: 1; min-width: 0; height: 100%; display: flex; flex-direction: column; padding: 24px 32px 32px; }
+      #bootScreen .bs-tb { display: flex; align-items: center; gap: 16px; height: 36px; flex: 0 0 36px; }
+      #bootScreen .bs-cap { width: 74px; height: 36px; border-radius: 999px; }
+      #bootScreen .bs-ttl { width: 120px; height: 22px; margin-left: -4px; }
+      #bootScreen .bs-srch { flex: 1000 1 0; max-width: 400px; min-width: 0; height: 36px; border-radius: 999px; margin-left: 16px; }
+      #bootScreen .bs-mon { width: 150px; height: 36px; border-radius: 999px; }
+      #bootScreen .bs-qa { width: 140px; height: 36px; border-radius: 999px; }
+      #bootScreen .bs-tb .bs-c, #bootScreen .bs-ph .bs-c { border-radius: 999px; }
+      #bootScreen .bs-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-top: 28px; flex: 0 0 auto; }
+      #bootScreen .bs-sc { position: relative; height: 132px; border-radius: 12px; background: var(--bs-group); border: 0.5px solid var(--bs-line); }
+      #bootScreen .bs-sc i { position: absolute; }
+      #bootScreen .bs-sct { left: 17px; top: 24px; width: 100px; height: 16px; }
+      #bootScreen .bs-sci { right: 17px; top: 17px; width: 30px; height: 30px; }
+      #bootScreen .bs-scv { left: 17px; top: 58px; width: 120px; height: 36px; }
+      #bootScreen .bs-scf { left: 17px; top: 101px; width: 80px; height: 14px; }
+      #bootScreen .bs-tbl { margin-top: 32px; flex: 1 1 0; min-height: 0; overflow: hidden; border-radius: 12px; background: var(--bs-group); border: 0.5px solid var(--bs-line);
+        padding: 24px 24px 0; display: flex; flex-direction: column; gap: 8px; }
+      #bootScreen .bs-row { height: 60px; flex: 0 0 60px; }
+      /* partner: centred column, header, 5 cards, sections */
+      #bootScreen .bs-p-desk { flex-direction: column; width: min(1222px, calc(100vw - 48px)); margin: 0 auto; padding-top: 32px; height: 100%; }
+      #bootScreen .bs-ph { display: flex; align-items: center; gap: 8px; height: 56px; flex: 0 0 56px; padding-left: 4px; }
+      #bootScreen .bs-ph .bs-pt { width: 170px; height: 22px; }
+      #bootScreen .bs-pcards { display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px; margin-top: 32px; }
+      #bootScreen .bs-pc { height: 144px; border-radius: 12px; background: var(--bs-group); border: 0.5px solid var(--bs-line); padding: 33px 32px 0; display: flex; flex-direction: column; gap: 8px; }
+      #bootScreen .bs-pcl { width: 120px; height: 14px; }
+      #bootScreen .bs-pcv { width: min(180px, 100%); height: 36px; }
+      #bootScreen .bs-pcc { width: 100px; height: 12px; }
+      #bootScreen .bs-sec { margin-top: 32px; border-radius: 12px; background: var(--bs-group); border: 0.5px solid var(--bs-line); padding: 25px 32px 17px; display: flex; flex-direction: column; gap: 16px; flex: 0 0 auto; }
+      #bootScreen .bs-st { width: 200px; height: 24px; margin-bottom: 0; }
+      #bootScreen .bs-sr { height: 40px; }
+    }
+
+    html.boot #bootScreen { z-index: 10; transition: opacity .25s ease; }
+    /* launch screen (nobody signed in): the logo in the middle, like an iPhone app opening.
+       Same size and place as Chrome's own launch screen on Android (measured 17 Oct, Pixel: 191 px icon centred at 48.2%
+       of the screen), so the logo stays still when Chrome's screen hands over to ours.
+       Placed by the SCREEN height (vh), not the page: the iPhone home-screen app starts with a page 20 pt shorter and
+       then grows (recording 17 Oct: the logo dropped a little at 1.6 s); the screen height never changes */
+    html.fd-launch body::after { content: ''; position: fixed; z-index: 10; left: 50%; top: 46.3vh; width: 73px; height: 73px; margin: -36.5px 0 0 -36.5px;
+      background: url('icon.svg?v=424') center / contain no-repeat; border-radius: 18px; }
+    html.fd-launch #app { visibility: hidden; }
+    /* signed in: the same logo for a moment, over the plain background, then the loading screen fades in */
+    html.boot body::after { content: ''; position: fixed; z-index: 60; left: 50%; top: 46.3vh; width: 73px; height: 73px; margin: -36.5px 0 0 -36.5px; pointer-events: none;
+      background: url('icon.svg?v=424') center / contain no-repeat; border-radius: 18px; opacity: 0; transition: opacity .3s ease; }
+    html.boot.fd-logo body::after { opacity: 1; }
+    #bootScreen > * { transition: opacity .3s ease; }
+    html.boot.fd-logo #bootScreen > * { opacity: 0; }
+    #bootScreen .bs-search, #bootScreen .bs-bolt { position: absolute !important; bottom: calc(14px + env(safe-area-inset-bottom) + var(--host-bottom, 0px)) !important; }
+    html.boot.fd-ready #bootScreen { opacity: 0; }
+    html[data-theme="light"], html[data-theme="light"] body { background: #f2f2f7; }
+    @media (min-width: 769px) { html[data-theme="light"], html[data-theme="light"] body { background: #f5f5f7; } }
+      /* start-up screen (20 Oct): the same new skeleton as the app (admin, phone) */
+    #bootScreen .bs-a-phone { display: none !important; }
+    #bootScreen .sk-ios { display: none; }
+    @keyframes skiShim { 0% { background-position: 120% 0; } 100% { background-position: -120% 0; } }
+    @media (max-width: 768px) {
+      html.boot:not(.boot-partner) #bootScreen .sk-ios { display: flex; flex-direction: column; gap: 14px; padding: calc(14px + env(safe-area-inset-top, 0px) + var(--host-top, 0px)) 12px 0; height: 100%; box-sizing: border-box; overflow: hidden; }
+      #bootScreen .sk-ios i, #bootScreen .sk-ios .ski-search { display: block; border-radius: 7px; flex: 0 0 auto;
+        background: linear-gradient(90deg, rgba(255,255,255,0.07) 0 35%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0.07) 65% 100%) 0 0 / 300% 100%; animation: skiShim 1.6s linear infinite; }
+      html[data-theme="light"] #bootScreen .sk-ios i, html[data-theme="light"] #bootScreen .sk-ios .ski-search { background-image: linear-gradient(90deg, rgba(0,0,0,0.06) 0 35%, rgba(0,0,0,0.02) 50%, rgba(0,0,0,0.06) 65% 100%); }
+      #bootScreen .sk-ios .ski-bar { display: flex; align-items: center; gap: 8px; height: 52px; }
+      #bootScreen .sk-ios .ski-bar span { flex: 1; }
+      #bootScreen .sk-ios .ski-c { width: 44px; height: 44px; border-radius: 50%; }
+      #bootScreen .sk-ios .ski-title { width: 190px; height: 32px; border-radius: 9px; margin: 6px 6px 2px; }
+      #bootScreen .sk-ios .ski-card { background: #1c1c1e; border-radius: 22px; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+      html[data-theme="light"] #bootScreen .sk-ios .ski-card { background: #fff; }
+      #bootScreen .sk-ios .ski-row { display: flex; align-items: center; gap: 10px; }
+      #bootScreen .sk-ios .ski-sq { width: 34px; height: 34px; border-radius: 10px; }
+      #bootScreen .sk-ios .ski-l { height: 13px; } #bootScreen .sk-ios .ski-s { width: 70px; height: 10px; margin-top: 7px; }
+      #bootScreen .sk-ios .ski-big { width: 70%; height: 34px; border-radius: 10px; } #bootScreen .sk-ios .ski-m { width: 75%; height: 20px; }
+      #bootScreen .sk-ios .ski-tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+      #bootScreen .sk-ios .ski-group { padding: 4px 16px; gap: 0; }
+      #bootScreen .sk-ios .ski-li { display: flex; align-items: center; gap: 12px; min-height: 60px; }
+      #bootScreen .sk-ios .ski-li span { flex: 1; }
+      #bootScreen .sk-ios .ski-group .ski-li + .ski-li, #bootScreen .sk-ios .ski-list .ski-li + .ski-li { box-shadow: inset 0 0.5px 0 rgba(127,127,127,0.25); }
+      #bootScreen .sk-ios .ski-amt { width: 84px; height: 14px; }
+      #bootScreen .sk-ios .ski-h { width: 200px; height: 22px; margin: 10px 4px 0; border-radius: 7px; }
+      #bootScreen .sk-ios .ski-list { padding: 0 4px; }
+      #bootScreen .sk-ios .ski-av { width: 38px; height: 38px; border-radius: 50%; }
+      #bootScreen .sk-ios .ski-bottom { position: absolute; left: 16px; right: 16px; bottom: calc(10px + env(safe-area-inset-bottom, 0px) + var(--host-bottom, 0px)); display: flex; gap: 8px; }
+      #bootScreen .sk-ios .ski-search { flex: 1; height: 50px; border-radius: 25px; }
+      #bootScreen .sk-ios .ski-big-c { width: 62px; height: 62px; }
+      #bootScreen .sk-ios .ski-bottom .ski-tabs { flex: 1 1 auto; min-width: 0; width: auto; height: 62px; border-radius: 31px; }   /* the tab bar (28 Oct) */
+      #bootScreen .sk-ios .ski-bottom .ski-big-c { flex: 0 0 62px; }
+    }
+    html.fd-ios:not(.fd-standalone) #bootScreen .sk-ios .ski-bottom { bottom: calc(14px + 100lvh + 58px - 100dvh + 160px) !important; }
+    /* start-up screen (21 Oct): partners — the same shapes as the new portal */
+    #bootScreen .bs-p-phone { display: none !important; }
+    #bootScreen .skp-ios { display: none; }
+    @keyframes skpShim { 0% { background-position: 120% 0; } 100% { background-position: -120% 0; } }
+    @media (max-width: 768px) {
+      html.boot.boot-partner #bootScreen .skp-ios { display: flex; flex-direction: column; gap: 14px; padding: calc(14px + env(safe-area-inset-top, 0px) + var(--host-top, 0px)) 12px 0; min-height: 100%; box-sizing: border-box; overflow: hidden; }
+      #bootScreen .skp-ios .ski-sub { width: 230px; height: 14px; margin: -6px 6px 4px; }
+      #bootScreen .skp-ios .ski-sum { width: 150px; height: 11px; margin: -6px 6px 0; }
+      #bootScreen .skp-ios .ski-list .ski-li { padding: 0 6px; }
+      #bootScreen .skp-ios i, #bootScreen .skp-ios .ski-search { display: block; border-radius: 7px; flex: 0 0 auto;
+        background: linear-gradient(90deg, rgba(255,255,255,0.07) 0 35%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0.07) 65% 100%) 0 0 / 300% 100%; animation: skpShim 1.6s linear infinite; }
+      html[data-theme="light"] #bootScreen .skp-ios i, html[data-theme="light"] #bootScreen .skp-ios .ski-search { background-image: linear-gradient(90deg, rgba(0,0,0,0.06) 0 35%, rgba(0,0,0,0.02) 50%, rgba(0,0,0,0.06) 65% 100%); }
+      #bootScreen .skp-ios .ski-bar { display: flex; align-items: center; gap: 8px; height: 52px; }
+      #bootScreen .skp-ios .ski-bar span { flex: 1; }
+      #bootScreen .skp-ios .ski-c { width: 44px; height: 44px; border-radius: 50%; }
+      #bootScreen .skp-ios .ski-title { width: 190px; height: 32px; border-radius: 9px; margin: 6px 6px 2px; }
+      #bootScreen .skp-ios .ski-card { background: #1c1c1e; border-radius: 22px; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+      html[data-theme="light"] #bootScreen .skp-ios .ski-card { background: #fff; }
+      #bootScreen .skp-ios .ski-row { display: flex; align-items: center; gap: 10px; }
+      #bootScreen .skp-ios .ski-sq { width: 34px; height: 34px; border-radius: 10px; }
+      #bootScreen .skp-ios .ski-l { height: 13px; } #bootScreen .skp-ios .ski-s { width: 70px; height: 10px; margin-top: 7px; }
+      #bootScreen .skp-ios .ski-big { width: 70%; height: 34px; border-radius: 10px; } #bootScreen .skp-ios .ski-m { width: 75%; height: 20px; }
+      #bootScreen .skp-ios .ski-tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+      #bootScreen .skp-ios .ski-group { padding: 4px 16px; gap: 0; }
+      #bootScreen .skp-ios .ski-li { display: flex; align-items: center; gap: 12px; min-height: 60px; }
+      #bootScreen .skp-ios .ski-li span { flex: 1; }
+      #bootScreen .skp-ios .ski-group .ski-li + .ski-li, #bootScreen .skp-ios .ski-list .ski-li + .ski-li { box-shadow: inset 0 0.5px 0 rgba(127,127,127,0.25); }
+      #bootScreen .skp-ios .ski-amt { width: 84px; height: 14px; }
+      #bootScreen .skp-ios .ski-h { width: 200px; height: 22px; margin: 10px 4px 0; border-radius: 7px; }
+      #bootScreen .skp-ios .ski-list { padding: 0 4px; }
+      #bootScreen .skp-ios .ski-av { width: 38px; height: 38px; border-radius: 50%; }
+      #bootScreen .skp-ios .ski-bottom { position: fixed; left: 20px; right: 20px; bottom: calc(14px + env(safe-area-inset-bottom, 0px) + var(--host-bottom, 0px)); display: flex; gap: 12px; }
+      #bootScreen .skp-ios .ski-search { flex: 1; height: 50px; border-radius: 25px; }
+      #bootScreen .skp-ios .ski-big-c { width: 50px; height: 50px; }
+      /* the tab bar (4 Nov): the portal now has the admin's 62 pt glass bar (no Search circle beside it) */
+      #bootScreen .skp-ios .ski-ptabs { position: fixed; left: 16px; right: 16px; bottom: calc(10px + env(safe-area-inset-bottom, 0px) + var(--host-bottom, 0px)); height: 62px; border-radius: 31px; z-index: 3; }
+    }
+    @media (max-width: 768px) {   /* skeleton bottom bar: placed explicitly (a stretching search shape vanished on phones) */
+      html body #bootScreen .sk-ios .ski-bottom { display: block !important; height: 62px !important; z-index: 3; }
+      html body #bootScreen .sk-ios .ski-bottom .ski-search { position: absolute !important; left: 0 !important; right: 62px !important; top: 0 !important; width: auto !important; height: 50px !important; border-radius: 25px !important; }
+      html body #bootScreen .sk-ios .ski-bottom .ski-big-c { position: absolute !important; right: 0 !important; top: 0 !important; width: 62px !important; height: 62px !important; }
+      html body #bootScreen .sk-ios .ski-bottom .ski-tabs { position: absolute !important; left: 0 !important; right: 70px !important; top: 0 !important; width: auto !important; height: 62px !important; border-radius: 31px !important; }
+    }
+    /* ===== Desktop (21 Oct): loading screens shaped like the macOS 27 layout (admin: grey sidebar with the search row,
+       toolbar capsules, six summary boxes, striped list + side boxes; portal: toolbar, five boxes, striped lists) ===== */
+    .sk-mac, .sk-macp { display: none; }
+    @keyframes skmShim { 0% { background-position: 100% 0; } 100% { background-position: -100% 0; } }
+    @media (min-width: 769px) {
+      html { --skm-side: #272727; --skm-page: #1e1e1e; --skm-box: #242425; --skm-fill: rgba(255,255,255,0.08); --skm-hi: rgba(255,255,255,0.15); --skm-edge: #414141; --skm-stripe: #292929; }
+      html[data-theme="light"] { --skm-side: #ececec; --skm-page: #ffffff; --skm-box: #f7f7f7; --skm-fill: rgba(0,0,0,0.06); --skm-hi: rgba(0,0,0,0.025); --skm-edge: #d4d4d4; --skm-stripe: #f4f5f5; }
+      .sk-mac { display: flex; position: fixed; inset: 0; z-index: 2; background: var(--skm-page); }
+      .sk-macp { display: block; position: fixed; inset: 0; z-index: 2; background: var(--skm-page); overflow: hidden; }
+      .sk-mac i, .sk-macp i { display: block; flex: 0 0 auto; border-radius: 6px; background: linear-gradient(90deg, var(--skm-fill) 0 35%, var(--skm-hi) 50%, var(--skm-fill) 65% 100%) 0 0 / 300% 100%; animation: skmShim 1.6s linear infinite; }
+      .skm-side { width: 232px; flex: 0 0 232px; height: 100%; background: var(--skm-side); border-right: 0.5px solid var(--skm-edge); padding: 8px 10px; box-sizing: border-box; overflow: hidden; position: relative; }
+      .skm-user { position: absolute; left: 0; right: 0; bottom: 0; display: flex; align-items: center; gap: 10px; padding: 9px 16px 15px; background: var(--skm-side); }
+      .sk-mac .skm-user .skm-c { width: 28px; height: 28px; flex: none; } .skm-user span { display: flex; flex-direction: column; gap: 5px; } .sk-mac .skm-user .skm-t { height: 9px; }
+      .sk-mac .skm-srch { width: 36px; border-radius: 18px; } @media (min-width: 1100px) { .sk-mac .skm-srch { width: 240px; } }
+      .skm-top { display: flex; gap: 8px; height: 36px; }
+      .sk-mac .skm-field { flex: 1 1 auto; height: 36px; border-radius: 18px; }
+      .sk-mac .skm-c, .sk-macp .skm-c { width: 36px; height: 36px; border-radius: 50%; }
+      .sk-mac .skm-h { width: 64px; height: 9px; margin: 19px 7px 4px; }
+      .skm-row { display: flex; align-items: center; gap: 10px; height: 32px; padding: 0 10px; }
+      .sk-mac .skm-ic { width: 17px; height: 17px; border-radius: 5px; } .sk-mac .skm-t { height: 11px; }
+      .skm-main { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; }
+      .skm-bar { height: 52px; flex: 0 0 52px; display: flex; align-items: center; gap: 8px; padding: 0 16px 0 12px; box-sizing: border-box; }
+      .skm-bar > span { flex: 1 1 auto; }
+      .sk-mac .skm-cap, .sk-macp .skm-cap { height: 36px; border-radius: 18px; }
+      .sk-mac .skm-title, .sk-macp .skm-title { width: 110px; height: 14px; margin-left: 4px; }
+      .skm-body { padding: 20px 32px; display: flex; flex-direction: column; gap: 20px; min-height: 0; overflow: hidden; }
+      .skm-boxes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+      .skm-box { background: var(--skm-box); border-radius: 22px; height: 112px; padding: 18px; box-sizing: border-box; display: flex; flex-direction: column; gap: 12px; }
+      .skm-box i:nth-child(1) { width: 55%; height: 11px; } .skm-box i:nth-child(2) { width: 75%; height: 20px; } .skm-box i:nth-child(3) { width: 45%; height: 10px; }
+      .skm-split { display: flex; flex-direction: column; gap: 20px; }
+      .skm-aside { display: block; columns: 2; column-gap: 10px; order: -1; }
+      .skm-list .skm-lh { width: 150px; height: 12px; margin: 0 10px 14px; }
+      .skm-lrow { display: grid; grid-template-columns: 110px minmax(0, 1fr) 90px 90px; gap: 20px; align-items: center; height: 28px; padding: 0 10px; border-radius: 6px; }
+      .skm-lrow:nth-of-type(even) { background: var(--skm-stripe); }
+      .skm-lrow i { height: 10px; } .skm-lrow i:nth-child(3), .skm-lrow i:nth-child(4) { width: 100%; }
+      .skm-sbox { background: var(--skm-box); border-radius: 22px; break-inside: avoid; margin: 0 0 10px; }
+      .skm-flow { height: 176px; background: var(--skm-box); border-radius: 22px; margin: 0 0 20px; }
+      .skm-pbar { position: fixed; top: 0; left: 0; right: 0; padding: 0 max(16px, calc((100vw - 1232px) / 2)); }
+      .skm-ptitle { display: flex; flex-direction: column; gap: 6px; }
+      .sk-macp .skm-pseg { width: 352px; height: 36px; border-radius: 18px; flex: none; }   /* Overview · Statement · Savings · Company */
+      .sk-macp .skm-plogo { width: 30px; height: 30px; border-radius: 7px; flex: none; margin-right: 2px; }   /* the app icon beside the portal name */
+
+      .sk-macp .skm-ptitle .skm-title { margin: 0; width: 120px; } .sk-macp .skm-sub { width: 218px; height: 9px; }
+      .skm-pbody { max-width: 1264px; margin: 0 auto; padding: 64px 16px 0; display: flex; flex-direction: column; gap: 22px; }
+      .skm-five { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+      /* the Dashboard as it is now (Nov 2026): list title + count, column header line, Date · Description · ● Type · Amount; cards on the right */
+      .skm-list .skm-lt { display: flex; justify-content: space-between; align-items: center; margin: 0 10px 12px; } .skm-list .skm-lt .skm-lh { margin: 0; }
+      .sk-mac .skm-lhead { margin: 0 0 4px; height: 24px; background: none !important; } .sk-mac .skm-lhead i { height: 8px; opacity: .7; }
+      .sk-mac .skm-lrow .skm-type { display: flex; align-items: center; gap: 6px; } .sk-mac .skm-lrow .skm-dot { width: 7px; height: 7px; border-radius: 50%; }
+      .sk-mac .skm-lrow .skm-amt { justify-self: end; }
+      .sk-mac .skm-lrow { grid-template-columns: 220px minmax(0, 1.6fr) minmax(0, 1.3fr) minmax(0, 1fr); }   /* the real list: Type sits mid-way, Amount at the right */
+      .sk-mac .skm-sbox { padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+      .sk-mac .skm-sh { display: flex; justify-content: space-between; align-items: center; } .sk-mac .skm-sh i { height: 10px; }
+      .sk-mac .skm-bar2 { height: 4px; border-radius: 2px; margin-top: -4px; }
+      /* any page but the Dashboard (reopened after a reload): the list page shape — toolbar, then the table across the full width */
+      html.sk-pg-list .sk-mac :is(.skm-boxes, .skm-flow, .skm-aside, .skm-lt) { display: none !important; }
+      html.sk-pg-list .sk-mac .skm-split { display: block !important; }
+      html.sk-pg-list .sk-mac .skm-body { padding: 6px 10px 0 !important; }
+      /* the other page shapes: Financial Position, Wise Balances, Settings (General / Appearance) — measured from the real pages */
+      .sk-mac :is(.skm-fp, .skm-wb, .skm-set) { display: none; }
+      html.sk-pg-fp .sk-mac .skm-fp, html.sk-pg-set .sk-mac .skm-set { display: block; } html.sk-pg-wb .sk-mac .skm-wb { display: grid; }
+      html:is(.sk-pg-fp, .sk-pg-wb) .sk-mac :is(.skm-boxes, .skm-flow, .skm-aside) { display: none !important; }
+      html:is(.sk-pg-fp, .sk-pg-wb) .sk-mac .skm-split { display: block !important; }
+      html.sk-pg-set .sk-mac :is(.skm-boxes, .skm-split) { display: none !important; }
+      html:is(.sk-pg-fp, .sk-pg-wb, .sk-pg-set) .sk-mac :is(.skm-cmonth, .skm-cadd) { display: none !important; }
+      html.sk-pg-set .sk-mac .skm-cfilter { display: none !important; }   /* settings pages have nothing to filter */
+      .sk-mac .skm-hero { background: var(--skm-box); border-radius: 22px; padding: 22px 18px 18px; display: flex; flex-direction: column; gap: 12px; margin: 0 0 22px; }
+      .sk-mac .skm-meter { width: 100%; height: 8px; border-radius: 4px; }
+      .sk-mac .skm-cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; margin: 0 0 22px; align-items: start; }
+      .sk-mac .skm-gh { width: 60px; height: 11px; margin: 0 16px 14px; }
+      .sk-mac .skm-grp { background: var(--skm-box); border-radius: 18px; padding: 0 16px; } .sk-mac .skm-grp .skm-sh { height: 32px; }
+      .sk-mac .skm-wb { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 0 0 22px; } .sk-mac .skm-wb > .skm-box:first-child { grid-column: span 2; }
+      .sk-mac .skm-wb .skm-box i { width: auto; }
+      .sk-mac .skm-set { max-width: 920px; } .sk-mac .skm-card { background: var(--skm-box); border-radius: 14px; padding: 0 20px; }
+      .sk-mac .skm-srow { display: flex; justify-content: space-between; align-items: center; gap: 20px; min-height: 72px; }
+      .sk-mac .skm-srow + .skm-srow { box-shadow: 0 -0.5px 0 var(--skm-edge); } .sk-mac .skm-srow > span { display: flex; flex-direction: column; gap: 8px; }
+      .sk-mac .skm-sgh { width: 70px; height: 11px; margin: 28px 6px 16px; } .sk-mac .skm-note { width: 50%; height: 8px; margin: 16px 6px 0; }
+      .sk-mac .skm-fl { display: flex; align-items: center; gap: 10px; } .sk-mac .skm-fl .skm-dot { width: 8px; height: 8px; border-radius: 50%; }
+      .sk-mac .skm-flow { height: auto; padding: 16px 18px 12px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px; }
+      .sk-mac .skm-fbars { display: flex; justify-content: space-around; align-items: flex-end; height: 128px; }
+      .sk-mac .skm-fcol { display: flex; flex-direction: column; align-items: center; gap: 6px; } .sk-mac .skm-fpair { display: flex; align-items: flex-end; gap: 4px; height: 86px; }
+      .sk-mac .skm-fpair i { width: 16px; border-radius: 3px; } .sk-mac .skm-fpair i.skm-fx { opacity: .7; }
+    }
+    @media (min-width: 1280px) {
+      .skm-boxes:not(.skm-five) { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+      .skm-split { display: grid; grid-template-columns: minmax(0, 1fr) 300px; align-items: start; }
+      .skm-aside { display: block; columns: 1; order: 0; }
+    }
+    @media (min-width: 769px) {
+      html.boot #bootScreen .bs-a-desk, html.boot #bootScreen .bs-p-desk { display: none !important; }
+      html.boot.boot-partner #bootScreen .sk-mac, html.boot:not(.boot-partner) #bootScreen .sk-macp { display: none !important; }
+      #bootScreen :is(.sk-mac, .sk-macp) i { border-radius: 6px; background: linear-gradient(90deg, var(--skm-fill) 0 35%, var(--skm-hi) 50%, var(--skm-fill) 65% 100%) 0 0 / 300% 100%; }
+      #bootScreen .sk-mac .skm-field { flex: 1 1 auto; border-radius: 18px; }
+      #bootScreen :is(.sk-mac, .sk-macp) .skm-cap { border-radius: 18px; }
+      #bootScreen :is(.sk-mac, .sk-macp) .skm-c { border-radius: 50%; }
+      #bootScreen .sk-mac .skm-ic { border-radius: 5px; }
+    }
+</style>
+<style>
+    /* v532: the admin loading screen uses the GBC app's bars: buttons right under the status bar (filter · search · + capsule, bell, account),
+       full-width tab bar 21 pt from the sides and bottom, no search circle */
+    html.boot:not(.boot-partner) body #bootScreen .sk-ios:not(#_) { padding-top: calc(env(safe-area-inset-top, 0px) + var(--host-top, 0px)) !important; }
+    html body #bootScreen .sk-ios .ski-bar:not(#_) { height: 44px !important; gap: 12px !important; padding-right: 4px !important; }
+    html body #bootScreen .sk-ios .ski-bar .ski-grp:not(#_) { width: 157px !important; height: 44px !important; border-radius: 22px !important; flex: 0 0 157px; }
+    html body #bootScreen .sk-ios .ski-bar .ski-cap:not(#_) { width: 62px !important; height: 44px !important; border-radius: 22px !important; flex: 0 0 62px; }
+    html:not(.fd-ios) body #bootScreen .sk-ios .ski-bottom:not(#_), html.fd-standalone body #bootScreen .sk-ios .ski-bottom:not(#_) { left: 21px !important; right: 21px !important; bottom: max(21px, calc(env(safe-area-inset-bottom, 0px) + var(--host-bottom, 0px) - 8px)) !important; }
+    html body #bootScreen .sk-ios .ski-bottom:not(#_) { left: 21px !important; right: 21px !important; }
+    html body #bootScreen .sk-ios .ski-bottom .ski-tabs:not(#_) { right: 0 !important; }
+    html body #bootScreen .sk-ios .ski-bottom .ski-big-c:not(#_) { display: none !important; }
+  </style>
+</head>
+<body>
+  <div id="fdProbeL"></div><div id="fdProbeD"></div>
+  <div id="bootScreen" aria-hidden="true">
+    <div class="sk-mac" aria-hidden="true"><div class="skm-side"><div class="skm-top"><i class="skm-field"></i><i class="skm-c"></i></div><i class="skm-h"></i><div class="skm-row"><i class="skm-ic"></i><i class="skm-t" style="width:82px"></i></div><i class="skm-h"></i><div class="skm-row"><i class="skm-ic"></i><i class="skm-t" style="width:71px"></i></div><div class="skm-row"><i class="skm-ic"></i><i class="skm-t" style="width:87px"></i></div><div class="skm-row"><i class="skm-ic"></i><i class="skm-t" style="width:103px"></i></div><div class="skm-row"><i class="skm-ic"></i><i class="skm-t" style="width:65px"></i></div><div class="skm-row"><i class="skm-ic"></i><i class="skm-t" style="width:66px"></i></div><i class="skm-h"></i><div class="skm-row"><i class="skm-ic"></i><i class="skm-t" style="width:96px"></i></div><div class="skm-row"><i class="skm-ic"></i><i class="skm-t" style="width:68px"></i></div><div class="skm-row"><i class="skm-ic"></i><i class="skm-t" style="width:85px"></i></div><i class="skm-h"></i><div class="skm-row"><i class="skm-ic"></i><i class="skm-t" style="width:99px"></i></div><div class="skm-row"><i class="skm-ic"></i><i class="skm-t" style="width:65px"></i></div><div class="skm-row"><i class="skm-ic"></i><i class="skm-t" style="width:94px"></i></div><div class="skm-row"><i class="skm-ic"></i><i class="skm-t" style="width:75px"></i></div><div class="skm-row"><i class="skm-ic"></i><i class="skm-t" style="width:64px"></i></div><i class="skm-h"></i><div class="skm-row"><i class="skm-ic"></i><i class="skm-t" style="width:67px"></i></div><div class="skm-row"><i class="skm-ic"></i><i class="skm-t" style="width:89px"></i></div><div class="skm-row"><i class="skm-ic"></i><i class="skm-t" style="width:88px"></i></div><div class="skm-row"><i class="skm-ic"></i><i class="skm-t" style="width:66px"></i></div><div class="skm-row"><i class="skm-ic"></i><i class="skm-t" style="width:77px"></i></div><i class="skm-h"></i><div class="skm-row"><i class="skm-ic"></i><i class="skm-t" style="width:67px"></i></div><div class="skm-row"><i class="skm-ic"></i><i class="skm-t" style="width:97px"></i></div><i class="skm-h"></i><div class="skm-row"><i class="skm-ic"></i><i class="skm-t" style="width:89px"></i></div><div class="skm-row"><i class="skm-ic"></i><i class="skm-t" style="width:65px"></i></div><div class="skm-row"><i class="skm-ic"></i><i class="skm-t" style="width:98px"></i></div><div class="skm-user"><i class="skm-c"></i><span><i class="skm-t" style="width:120px"></i><i class="skm-t" style="width:90px"></i></span></div></div><div class="skm-main"><div class="skm-bar"><i class="skm-cap" style="width:73px"></i><i class="skm-title"></i><span></span><i class="skm-c"></i><i class="skm-c skm-cfilter"></i><i class="skm-cap skm-cmonth" style="width:170px"></i><i class="skm-cap skm-cadd" style="width:155px"></i><i class="skm-c"></i><i class="skm-cap skm-srch"></i></div><div class="skm-body"><div class="skm-fp"><div class="skm-hero"><div class="skm-sh"><i style="width:90px;height:12px"></i><i style="width:220px;height:26px"></i></div><i style="width:100px;height:9px"></i><i class="skm-meter"></i><i style="width:110px;height:8px"></i></div><div class="skm-cols"><div><i class="skm-gh"></i><div class="skm-grp"><div class="skm-sh"><i style="width:150px"></i><i style="width:96px"></i></div><div class="skm-sh"><i style="width:70px"></i><i style="width:100px"></i></div><div class="skm-sh"><i style="width:80px"></i><i style="width:104px"></i></div><div class="skm-sh"><i style="width:160px"></i><i style="width:90px"></i></div><div class="skm-sh"><i style="width:110px"></i><i style="width:110px"></i></div></div></div><div><i class="skm-gh"></i><div class="skm-grp"><div class="skm-sh"><i style="width:150px"></i><i style="width:96px"></i></div><div class="skm-sh"><i style="width:110px"></i><i style="width:60px"></i></div><div class="skm-sh"><i style="width:130px"></i><i style="width:96px"></i></div><div class="skm-sh"><i style="width:110px"></i><i style="width:110px"></i></div></div></div></div></div><div class="skm-wb"><div class="skm-box"><span class="skm-fl"><i style="width:18px;height:18px"></i><i style="width:80px;height:11px"></i></span><i style="width:35%;height:24px"></i><i style="width:20%;height:9px"></i></div><div class="skm-box"><span class="skm-fl"><i style="width:18px;height:14px"></i><i style="width:40px;height:10px"></i></span><i style="width:45%;height:20px"></i><i style="width:35%;height:9px"></i></div><div class="skm-box"><span class="skm-fl"><i style="width:18px;height:14px"></i><i style="width:40px;height:10px"></i></span><i style="width:45%;height:20px"></i><i style="width:35%;height:9px"></i></div><div class="skm-box"><span class="skm-fl"><i style="width:18px;height:14px"></i><i style="width:40px;height:10px"></i></span><i style="width:45%;height:20px"></i><i style="width:35%;height:9px"></i></div><div class="skm-box"><span class="skm-fl"><i style="width:18px;height:14px"></i><i style="width:40px;height:10px"></i></span><i style="width:45%;height:20px"></i><i style="width:35%;height:9px"></i></div><div class="skm-box"><span class="skm-fl"><i style="width:18px;height:14px"></i><i style="width:40px;height:10px"></i></span><i style="width:45%;height:20px"></i><i style="width:35%;height:9px"></i></div><div class="skm-box"><span class="skm-fl"><i style="width:18px;height:14px"></i><i style="width:40px;height:10px"></i></span><i style="width:45%;height:20px"></i><i style="width:35%;height:9px"></i></div></div><div class="skm-set"><div class="skm-card"><div class="skm-srow"><span><i style="width:70px;height:11px"></i><i style="width:420px;height:8px"></i></span><i style="width:170px;height:30px;border-radius:9px"></i></div></div><i class="skm-sgh"></i><div class="skm-card"><div class="skm-srow"><span><i style="width:110px;height:11px"></i><i style="width:180px;height:8px"></i></span><i style="width:150px;height:10px"></i></div><div class="skm-srow"><span><i style="width:100px;height:11px"></i><i style="width:520px;height:8px"></i></span><i style="width:50px;height:10px"></i></div></div><i class="skm-note"></i><i class="skm-sgh"></i><div class="skm-card"><div class="skm-srow"><span><i style="width:170px;height:11px"></i><i style="width:460px;height:8px"></i></span><i style="width:36px;height:20px;border-radius:10px"></i></div><div class="skm-srow"><span><i style="width:190px;height:11px"></i><i style="width:560px;height:8px"></i></span><i style="width:36px;height:20px;border-radius:10px"></i></div><div class="skm-srow"><span><i style="width:170px;height:11px"></i><i style="width:440px;height:8px"></i></span><i style="width:36px;height:20px;border-radius:10px"></i></div></div><i class="skm-note" style="width:80%"></i></div><div class="skm-boxes"><div class="skm-box"><i></i><i></i><i></i></div><div class="skm-box"><i></i><i></i><i></i></div><div class="skm-box"><i></i><i></i><i></i></div><div class="skm-box"><i></i><i></i><i></i></div><div class="skm-box"><i></i><i></i><i></i></div><div class="skm-box"><i></i><i></i><i></i></div></div><div class="skm-split"><div class="skm-list"><div class="skm-flow"><div class="skm-sh"><span class="skm-fl"><i style="width:72px"></i><i style="width:58px"></i><i style="width:64px"></i></span><i style="width:58px"></i></div><div class="skm-fbars"><div class="skm-fcol"><span class="skm-fpair"><i style="height:82px"></i><i class="skm-fx" style="height:4px"></i></span><i style="width:70px;height:9px"></i><i style="width:30px;height:8px"></i></div><div class="skm-fcol"><span class="skm-fpair"><i style="height:84px"></i><i class="skm-fx" style="height:8px"></i></span><i style="width:70px;height:9px"></i><i style="width:30px;height:8px"></i></div><div class="skm-fcol"><span class="skm-fpair"><i style="height:76px"></i><i class="skm-fx" style="height:5px"></i></span><i style="width:70px;height:9px"></i><i style="width:30px;height:8px"></i></div><div class="skm-fcol"><span class="skm-fpair"><i style="height:72px"></i><i class="skm-fx" style="height:4px"></i></span><i style="width:70px;height:9px"></i><i style="width:30px;height:8px"></i></div><div class="skm-fcol"><span class="skm-fpair"><i style="height:52px"></i><i class="skm-fx" style="height:6px"></i></span><i style="width:70px;height:9px"></i><i style="width:30px;height:8px"></i></div><div class="skm-fcol"><span class="skm-fpair"><i style="height:50px"></i><i class="skm-fx" style="height:24px"></i></span><i style="width:70px;height:9px"></i><i style="width:30px;height:8px"></i></div></div></div><div class="skm-lt"><i class="skm-lh"></i><i style="width:100px;height:10px"></i></div><p class="skm-lrow skm-lhead"><i style="width:34px"></i><i style="width:80px"></i><i style="width:36px"></i><i class="skm-amt" style="width:52px"></i></p><div class="skm-lrow"><i style="width:73px"></i><i style="width:44%"></i><span class="skm-type"><i class="skm-dot"></i><i style="width:88px"></i></span><i class="skm-amt" style="width:88px"></i></div><div class="skm-lrow"><i style="width:88px"></i><i style="width:33%"></i><span class="skm-type"><i class="skm-dot"></i><i style="width:84px"></i></span><i class="skm-amt" style="width:86px"></i></div><div class="skm-lrow"><i style="width:82px"></i><i style="width:33%"></i><span class="skm-type"><i class="skm-dot"></i><i style="width:62px"></i></span><i class="skm-amt" style="width:69px"></i></div><div class="skm-lrow"><i style="width:87px"></i><i style="width:38%"></i><span class="skm-type"><i class="skm-dot"></i><i style="width:66px"></i></span><i class="skm-amt" style="width:81px"></i></div><div class="skm-lrow"><i style="width:74px"></i><i style="width:37%"></i><span class="skm-type"><i class="skm-dot"></i><i style="width:84px"></i></span><i class="skm-amt" style="width:77px"></i></div><div class="skm-lrow"><i style="width:87px"></i><i style="width:41%"></i><span class="skm-type"><i class="skm-dot"></i><i style="width:54px"></i></span><i class="skm-amt" style="width:86px"></i></div><div class="skm-lrow"><i style="width:88px"></i><i style="width:42%"></i><span class="skm-type"><i class="skm-dot"></i><i style="width:71px"></i></span><i class="skm-amt" style="width:71px"></i></div><div class="skm-lrow"><i style="width:87px"></i><i style="width:34%"></i><span class="skm-type"><i class="skm-dot"></i><i style="width:84px"></i></span><i class="skm-amt" style="width:69px"></i></div><div class="skm-lrow"><i style="width:89px"></i><i style="width:43%"></i><span class="skm-type"><i class="skm-dot"></i><i style="width:79px"></i></span><i class="skm-amt" style="width:89px"></i></div><div class="skm-lrow"><i style="width:87px"></i><i style="width:57%"></i><span class="skm-type"><i class="skm-dot"></i><i style="width:68px"></i></span><i class="skm-amt" style="width:82px"></i></div><div class="skm-lrow"><i style="width:88px"></i><i style="width:59%"></i><span class="skm-type"><i class="skm-dot"></i><i style="width:71px"></i></span><i class="skm-amt" style="width:77px"></i></div><div class="skm-lrow"><i style="width:77px"></i><i style="width:41%"></i><span class="skm-type"><i class="skm-dot"></i><i style="width:92px"></i></span><i class="skm-amt" style="width:92px"></i></div><div class="skm-lrow"><i style="width:77px"></i><i style="width:35%"></i><span class="skm-type"><i class="skm-dot"></i><i style="width:84px"></i></span><i class="skm-amt" style="width:77px"></i></div><div class="skm-lrow"><i style="width:86px"></i><i style="width:61%"></i><span class="skm-type"><i class="skm-dot"></i><i style="width:69px"></i></span><i class="skm-amt" style="width:91px"></i></div><div class="skm-lrow"><i style="width:84px"></i><i style="width:48%"></i><span class="skm-type"><i class="skm-dot"></i><i style="width:86px"></i></span><i class="skm-amt" style="width:70px"></i></div><div class="skm-lrow"><i style="width:73px"></i><i style="width:62%"></i><span class="skm-type"><i class="skm-dot"></i><i style="width:74px"></i></span><i class="skm-amt" style="width:73px"></i></div><div class="skm-lrow"><i style="width:80px"></i><i style="width:39%"></i><span class="skm-type"><i class="skm-dot"></i><i style="width:79px"></i></span><i class="skm-amt" style="width:81px"></i></div><div class="skm-lrow"><i style="width:71px"></i><i style="width:34%"></i><span class="skm-type"><i class="skm-dot"></i><i style="width:83px"></i></span><i class="skm-amt" style="width:86px"></i></div><div class="skm-lrow"><i style="width:80px"></i><i style="width:51%"></i><span class="skm-type"><i class="skm-dot"></i><i style="width:92px"></i></span><i class="skm-amt" style="width:79px"></i></div><div class="skm-lrow"><i style="width:89px"></i><i style="width:61%"></i><span class="skm-type"><i class="skm-dot"></i><i style="width:85px"></i></span><i class="skm-amt" style="width:93px"></i></div><div class="skm-lrow"><i style="width:84px"></i><i style="width:34%"></i><span class="skm-type"><i class="skm-dot"></i><i style="width:53px"></i></span><i class="skm-amt" style="width:76px"></i></div><div class="skm-lrow"><i style="width:85px"></i><i style="width:34%"></i><span class="skm-type"><i class="skm-dot"></i><i style="width:51px"></i></span><i class="skm-amt" style="width:91px"></i></div><div class="skm-lrow"><i style="width:92px"></i><i style="width:49%"></i><span class="skm-type"><i class="skm-dot"></i><i style="width:89px"></i></span><i class="skm-amt" style="width:86px"></i></div><div class="skm-lrow"><i style="width:91px"></i><i style="width:58%"></i><span class="skm-type"><i class="skm-dot"></i><i style="width:66px"></i></span><i class="skm-amt" style="width:90px"></i></div><div class="skm-lrow"><i style="width:82px"></i><i style="width:52%"></i><span class="skm-type"><i class="skm-dot"></i><i style="width:49px"></i></span><i class="skm-amt" style="width:82px"></i></div><div class="skm-lrow"><i style="width:81px"></i><i style="width:40%"></i><span class="skm-type"><i class="skm-dot"></i><i style="width:87px"></i></span><i class="skm-amt" style="width:71px"></i></div><div class="skm-lrow"><i style="width:85px"></i><i style="width:33%"></i><span class="skm-type"><i class="skm-dot"></i><i style="width:61px"></i></span><i class="skm-amt" style="width:92px"></i></div><div class="skm-lrow"><i style="width:79px"></i><i style="width:38%"></i><span class="skm-type"><i class="skm-dot"></i><i style="width:63px"></i></span><i class="skm-amt" style="width:80px"></i></div><div class="skm-lrow"><i style="width:82px"></i><i style="width:61%"></i><span class="skm-type"><i class="skm-dot"></i><i style="width:53px"></i></span><i class="skm-amt" style="width:73px"></i></div><div class="skm-lrow"><i style="width:84px"></i><i style="width:55%"></i><span class="skm-type"><i class="skm-dot"></i><i style="width:83px"></i></span><i class="skm-amt" style="width:76px"></i></div></div><div class="skm-aside"><div class="skm-sbox"><div class="skm-sh"><i style="width:110px"></i></div><i style="width:84px;height:8px"></i><div class="skm-sh"><span class="skm-fl"><i class="skm-dot"></i><i style="width:96px"></i></span><i style="width:70px"></i></div></div><div class="skm-sbox"><div class="skm-sh"><i style="width:118px"></i><i style="width:52px"></i></div><i style="width:160px;height:20px"></i><div class="skm-sh"><i style="width:36px"></i><i style="width:104px"></i></div><div class="skm-sh"><i style="width:40px"></i><i style="width:110px"></i></div></div><div class="skm-sbox"><div class="skm-sh"><i style="width:100px"></i><i style="width:52px"></i></div><i style="width:84px;height:8px"></i><div class="skm-sh"><i style="width:126px"></i><i style="width:56px"></i></div><i class="skm-bar2" style="width:100%"></i><div class="skm-sh"><i style="width:78px"></i><i style="width:56px"></i></div><i class="skm-bar2" style="width:14%"></i><div class="skm-sh"><i style="width:122px"></i><i style="width:56px"></i></div><i class="skm-bar2" style="width:8%"></i><div class="skm-sh"><i style="width:97px"></i><i style="width:56px"></i></div><i class="skm-bar2" style="width:6%"></i><div class="skm-sh"><i style="width:125px"></i><i style="width:56px"></i></div><i class="skm-bar2" style="width:3%"></i><div class="skm-sh"><i style="width:105px"></i><i style="width:56px"></i></div><i class="skm-bar2" style="width:7%"></i></div><div class="skm-sbox"><div class="skm-sh"><i style="width:110px"></i><i style="width:52px"></i></div><i style="width:100px;height:20px"></i></div><div class="skm-sbox"><div class="skm-sh"><i style="width:110px"></i><i style="width:52px"></i></div><i style="width:140px;height:8px"></i><div class="skm-sh"><i style="width:84px"></i><i style="width:96px"></i></div><div class="skm-sh"><i style="width:84px"></i><i style="width:96px"></i></div><div class="skm-sh"><i style="width:84px"></i><i style="width:96px"></i></div><div class="skm-sh"><i style="width:84px"></i><i style="width:96px"></i></div><div class="skm-sh"><i style="width:84px"></i><i style="width:96px"></i></div></div></div></div></div></div><script>(function(){try{var root=document.currentScript&&document.currentScript.parentNode;if(!root||window.innerWidth<769)return;var pg=window.__skPage||'dashboard',sh=null;try{sh=JSON.parse(localStorage.getItem('GHL_TB:'+pg)||'null');}catch(e){}if(!sh){try{var m=JSON.parse(localStorage.getItem('GHL_FD_TB')||'null');sh=m&&m[pg]||null;}catch(e){}}if(!sh||!sh.items)return;var bar=root.querySelector('.skm-bar');if(!bar)return;bar.style.position='relative';[].slice.call(bar.children).forEach(function(c,i){if(i>0)c.remove();});var mk=function(st,p){var e=document.createElement('i');e.setAttribute('style',st);(p||bar).appendChild(e);return e;};if(sh.s){var col=document.createElement('span');col.style.cssText='display:flex;flex-direction:column;gap:5px;margin-left:4px;flex:none';bar.appendChild(col);mk('width:'+sh.t+'px;height:12px',col);mk('width:'+sh.s+'px;height:8px',col);}else mk('width:'+sh.t+'px;height:14px;margin-left:4px');sh.items.forEach(function(x){mk('position:absolute;right:'+x[0]+'px;top:'+((52-x[2])/2)+'px;width:'+x[1]+'px;height:'+x[2]+'px;border-radius:'+x[3]+'px');});if(sh.seg)mk('position:absolute;left:calc(50% + '+(sh.seg[0]-sh.seg[1]/2)+'px);top:'+((52-sh.seg[2])/2)+'px;width:'+sh.seg[1]+'px;height:'+sh.seg[2]+'px;border-radius:'+(sh.seg[2]/2)+'px');if(sh.cols&&sh.cols.length>1){var gt=sh.cols.map(function(c){return c[0]+'fr';}).join(' ');var n=0;root.querySelectorAll('.skm-list .skm-lrow').forEach(function(r){r.style.gridTemplateColumns=gt;r.style.gap='0';r.innerHTML='';var head=r.classList.contains('skm-lhead');sh.cols.forEach(function(c,k){var e=document.createElement('i');var w=head?26+((k*37+n)%5)*8:Math.max(18,Math.min(c[0]-20,Math.round(c[0]*(0.35+((k*7+n*3)%5)*0.09))));e.style.cssText='width:'+w+'px;height:'+(head?8:10)+'px;margin:0 10px;'+(c[1]?'justify-self:end':'');r.appendChild(e);});n++;});}}catch(e){}})();</script></div>
+    <div class="sk-macp" aria-hidden="true"><div class="skm-bar skm-pbar"><i class="skm-plogo"></i><div class="skm-ptitle"><i class="skm-title"></i><i class="skm-sub"></i></div><span></span><i class="skm-cap skm-pseg"></i><span></span><i class="skm-c"></i><i class="skm-cap" style="width:150px"></i><i class="skm-c"></i></div><div class="skm-pbody"><div class="skm-boxes skm-five"><div class="skm-box"><i></i><i></i><i></i></div><div class="skm-box"><i></i><i></i><i></i></div><div class="skm-box"><i></i><i></i><i></i></div><div class="skm-box"><i></i><i></i><i></i></div><div class="skm-box"><i></i><i></i><i></i></div></div><div class="skm-list"><i class="skm-lh"></i><div class="skm-lrow"><i style="width:60%"></i><i style="width:40%"></i><i></i><i></i></div></div><div class="skm-list"><i class="skm-lh"></i><div class="skm-lrow"><i style="width:60%"></i><i style="width:40%"></i><i></i><i></i></div></div><div class="skm-list"><i class="skm-lh"></i><div class="skm-lrow"><i style="width:60%"></i><i style="width:40%"></i><i></i><i></i></div><div class="skm-lrow"><i style="width:67%"></i><i style="width:53%"></i><i></i><i></i></div><div class="skm-lrow"><i style="width:74%"></i><i style="width:66%"></i><i></i><i></i></div></div><div class="skm-list"><i class="skm-lh"></i><div class="skm-lrow"><i style="width:60%"></i><i style="width:40%"></i><i></i><i></i></div><div class="skm-lrow"><i style="width:67%"></i><i style="width:53%"></i><i></i><i></i></div><div class="skm-lrow"><i style="width:74%"></i><i style="width:66%"></i><i></i><i></i></div><div class="skm-lrow"><i style="width:81%"></i><i style="width:79%"></i><i></i><i></i></div><div class="skm-lrow"><i style="width:88%"></i><i style="width:47%"></i><i></i><i></i></div></div></div></div>
+    <div class="bs-a-desk"><div class="bs-side"><i class="bs-logo"></i><i class="bs-ni"></i><div class="bs-grp"><i class="bs-gt"></i><i class="bs-ni"></i><i class="bs-ni"></i><i class="bs-ni"></i><i class="bs-ni"></i><i class="bs-ni"></i></div><div class="bs-grp"><i class="bs-gt"></i><i class="bs-ni"></i><i class="bs-ni"></i><i class="bs-ni"></i></div><div class="bs-grp"><i class="bs-gt"></i><i class="bs-ni"></i><i class="bs-ni"></i><i class="bs-ni"></i></div><div class="bs-grp"><i class="bs-gt"></i><i class="bs-ni"></i><i class="bs-ni"></i></div><div class="bs-grp"><i class="bs-gt"></i><i class="bs-ni"></i><i class="bs-ni"></i><i class="bs-ni"></i><i class="bs-ni"></i><i class="bs-ni"></i></div><div class="bs-grp"><i class="bs-gt"></i><i class="bs-ni"></i><i class="bs-ni"></i></div><div class="bs-prof"><i class="bs-av"></i><div><i class="bs-pl1"></i><i class="bs-pl2"></i></div></div></div><div class="bs-main">
+        <div class="bs-tb"><i class="bs-cap"></i><i class="bs-ttl"></i><i class="bs-srch"></i><span></span><i class="bs-c"></i><i class="bs-mon"></i><i class="bs-qa"></i><i class="bs-c"></i><i class="bs-c"></i><i class="bs-c"></i></div>
+        <div class="bs-cards"><div class="bs-sc"><i class="bs-sct"></i><i class="bs-sci"></i><i class="bs-scv"></i><i class="bs-scf"></i></div><div class="bs-sc"><i class="bs-sct"></i><i class="bs-sci"></i><i class="bs-scv"></i><i class="bs-scf"></i></div><div class="bs-sc"><i class="bs-sct"></i><i class="bs-sci"></i><i class="bs-scv"></i><i class="bs-scf"></i></div><div class="bs-sc"><i class="bs-sct"></i><i class="bs-sci"></i><i class="bs-scv"></i><i class="bs-scf"></i></div><div class="bs-sc"><i class="bs-sct"></i><i class="bs-sci"></i><i class="bs-scv"></i><i class="bs-scf"></i></div><div class="bs-sc"><i class="bs-sct"></i><i class="bs-sci"></i><i class="bs-scv"></i><i class="bs-scf"></i></div></div>
+        <div class="bs-tbl"><i class="bs-row"></i><i class="bs-row"></i><i class="bs-row"></i><i class="bs-row"></i><i class="bs-row"></i><i class="bs-row"></i><i class="bs-row"></i><i class="bs-row"></i></div>
+      </div></div>
+    <div class="sk-ios" aria-hidden="true">
+        <div class="ski-bar"><span></span><i class="ski-c ski-grp"></i><i class="ski-c"></i><i class="ski-c ski-cap"></i></div>
+        <i class="ski-title"></i>
+        <div class="ski-card ski-hero"><div class="ski-row"><i class="ski-sq"></i><i class="ski-l" style="width:90px"></i></div><i class="ski-big"></i><i class="ski-l" style="width:60px"></i></div>
+        <div class="ski-tiles"><div class="ski-card"><i class="ski-sq"></i><i class="ski-l" style="width:80px"></i><i class="ski-m"></i></div><div class="ski-card"><i class="ski-sq"></i><i class="ski-l" style="width:90px"></i><i class="ski-m"></i></div></div>
+        <div class="ski-card ski-group"><div class="ski-li"><i class="ski-sq"></i><span><i class="ski-l" style="width:70px"></i><i class="ski-s"></i></span><i class="ski-amt"></i></div><div class="ski-li"><i class="ski-sq"></i><span><i class="ski-l" style="width:80px"></i><i class="ski-s"></i></span><i class="ski-amt"></i></div><div class="ski-li"><i class="ski-sq"></i><span><i class="ski-l" style="width:96px"></i><i class="ski-s"></i></span><i class="ski-amt"></i></div></div>
+        <i class="ski-h"></i>
+        <div class="ski-list"><div class="ski-li"><i class="ski-av"></i><span><i class="ski-l" style="width:150px"></i><i class="ski-s"></i></span><i class="ski-amt"></i></div><div class="ski-li"><i class="ski-av"></i><span><i class="ski-l" style="width:120px"></i><i class="ski-s"></i></span><i class="ski-amt"></i></div><div class="ski-li"><i class="ski-av"></i><span><i class="ski-l" style="width:140px"></i><i class="ski-s"></i></span><i class="ski-amt"></i></div><div class="ski-li"><i class="ski-av"></i><span><i class="ski-l" style="width:100px"></i><i class="ski-s"></i></span><i class="ski-amt"></i></div></div>
+        <div class="ski-bottom"><i class="ski-tabs"></i><i class="ski-c ski-big-c"></i></div>
+      </div>
+    <div class="bs-a-phone">
+      <div class="bs-bar"><i class="bs-c"></i><i class="bs-pill"></i><span></span><i class="bs-c"></i><i class="bs-c"></i><i class="bs-c"></i><i class="bs-c"></i><i class="bs-c"></i></div>
+      <div class="bs-list"><div><i class="bs-ic"></i><i class="bs-l1"></i><i class="bs-l2"></i><i class="bs-amt"></i></div><div><i class="bs-ic"></i><i class="bs-l1"></i><i class="bs-l2"></i><i class="bs-amt"></i></div><div><i class="bs-ic"></i><i class="bs-l1"></i><i class="bs-l2"></i><i class="bs-amt"></i></div><div><i class="bs-ic"></i><i class="bs-l1"></i><i class="bs-l2"></i><i class="bs-amt"></i></div><div><i class="bs-ic"></i><i class="bs-l1"></i><i class="bs-l2"></i><i class="bs-amt"></i></div><div><i class="bs-ic"></i><i class="bs-l1"></i><i class="bs-l2"></i><i class="bs-amt"></i></div></div>
+      <div class="bs-card"><i class="bs-ct"></i><i class="bs-tx"></i><i class="bs-tx"></i><i class="bs-tx"></i><i class="bs-tx"></i></div>
+      <i class="bs-search"></i><i class="bs-bolt"></i>
+    </div>
+    <div class="bs-p-desk">
+      <div class="bs-ph"><i class="bs-pt"></i><span></span><i class="bs-c"></i><i class="bs-mon"></i><i class="bs-c"></i><i class="bs-c"></i><i class="bs-c"></i></div>
+      <div class="bs-pcards"><div class="bs-pc"><i class="bs-pcl"></i><i class="bs-pcv"></i><i class="bs-pcc"></i></div><div class="bs-pc"><i class="bs-pcl"></i><i class="bs-pcv"></i><i class="bs-pcc"></i></div><div class="bs-pc"><i class="bs-pcl"></i><i class="bs-pcv"></i><i class="bs-pcc"></i></div><div class="bs-pc"><i class="bs-pcl"></i><i class="bs-pcv"></i><i class="bs-pcc"></i></div><div class="bs-pc"><i class="bs-pcl"></i><i class="bs-pcv"></i><i class="bs-pcc"></i></div></div>
+      <div class="bs-sec"><i class="bs-st"></i><i class="bs-sr"></i><i class="bs-sr"></i><i class="bs-sr"></i></div>
+      <div class="bs-sec"><i class="bs-st"></i><i class="bs-sr"></i><i class="bs-sr"></i></div>
+      <div class="bs-sec"><i class="bs-st"></i><i class="bs-sr"></i><i class="bs-sr"></i><i class="bs-sr"></i><i class="bs-sr"></i></div>
+    </div>
+    <div class="skp-ios" aria-hidden="true">
+        <div class="ski-bar"><span></span><i class="ski-c"></i><i class="ski-c"></i></div>
+        <i class="ski-title" style="width:160px"></i>
+        <div class="ski-card ski-group"><div class="ski-li"><i class="ski-sq"></i><span><i class="ski-l" style="width:110px"></i><i class="ski-s" style="width:120px"></i></span><i class="ski-amt"></i></div><div class="ski-li"><i class="ski-sq"></i><span><i class="ski-l" style="width:100px"></i><i class="ski-s" style="width:90px"></i></span><i class="ski-amt"></i></div><div class="ski-li"><i class="ski-sq"></i><span><i class="ski-l" style="width:90px"></i><i class="ski-s" style="width:80px"></i></span><i class="ski-amt"></i></div><div class="ski-li"><i class="ski-sq"></i><span><i class="ski-l" style="width:95px"></i><i class="ski-s" style="width:100px"></i></span><i class="ski-amt"></i></div><div class="ski-li"><i class="ski-sq"></i><span><i class="ski-l" style="width:115px"></i><i class="ski-s" style="width:120px"></i></span><i class="ski-amt"></i></div></div>
+        <i class="ski-h" style="width:150px"></i><i class="ski-sum"></i><div class="ski-list"><div class="ski-li"><span><i class="ski-l" style="width:110px"></i><i class="ski-s"></i></span><i class="ski-amt"></i></div></div>
+        <i class="ski-h" style="width:170px"></i><i class="ski-sum"></i><div class="ski-list"><div class="ski-li"><span><i class="ski-l" style="width:110px"></i><i class="ski-s"></i></span><i class="ski-amt"></i></div></div>
+        <i class="ski-h" style="width:200px"></i><i class="ski-sum"></i><div class="ski-list"><div class="ski-li"><span><i class="ski-l" style="width:120px"></i><i class="ski-s"></i></span><i class="ski-amt"></i></div><div class="ski-li"><span><i class="ski-l" style="width:100px"></i><i class="ski-s"></i></span><i class="ski-amt"></i></div></div>
+        <i class="ski-ptabs"></i>
+      </div>
+    <div class="bs-p-phone">
+      <div class="bs-bar"><i class="bs-pt"></i><span></span><i class="bs-c"></i><i class="bs-c"></i><i class="bs-c"></i><i class="bs-c"></i><i class="bs-c"></i></div>
+      <div class="bs-list"><div><i class="bs-ic"></i><i class="bs-l1"></i><i class="bs-l2"></i><i class="bs-amt"></i></div><div><i class="bs-ic"></i><i class="bs-l1"></i><i class="bs-l2"></i><i class="bs-amt"></i></div><div><i class="bs-ic"></i><i class="bs-l1"></i><i class="bs-l2"></i><i class="bs-amt"></i></div><div><i class="bs-ic"></i><i class="bs-l1"></i><i class="bs-l2"></i><i class="bs-amt"></i></div><div><i class="bs-ic"></i><i class="bs-l1"></i><i class="bs-l2"></i><i class="bs-amt"></i></div></div>
+      <div class="bs-card"><i class="bs-ct"></i><i class="bs-pr"></i><i class="bs-pr"></i><i class="bs-pr"></i></div>
+      <div class="bs-card"><i class="bs-ct"></i><i class="bs-pr"></i><i class="bs-pr"></i></div>
+    </div>
+  </div>
+  <iframe id="app" title="GHL Boys Club" allow="clipboard-write"></iframe>
+  <script>
+    // "Keep me signed in": the app tells this page its device key, and this page keeps it in its own storage and
+    // in its address (?k=…), so a phone home-screen icon opens straight in. The key goes back to the app on load.
+    // Home-screen app on iPhone: the page height leaves out the status bar (and on some models iPhone reports that
+    // as 0), so the app stopped short and a strip showed at the bottom. Size the app to the real screen height instead.
+    (function () {
+      var standalone = window.navigator.standalone === true || (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches);
+      if (!standalone) return;
+      if (!document.documentElement.classList.contains('fd-ios')) { document.documentElement.classList.add('fd-standalone'); return; }   // only iPhone needs the screen-height fix
+      function fit() {
+        var portrait = window.matchMedia('(orientation: portrait)').matches;
+        var full = portrait ? Math.max(screen.width, screen.height) : Math.min(screen.width, screen.height);
+        var h = Math.max(window.innerHeight, full) + 'px';
+        var f = document.getElementById('app');
+        if (f) { f.style.bottom = 'auto'; f.style.height = h; }
+        // the loading screen too (it stopped at the shorter page height = the small band in the home-screen app)
+        var bs = document.getElementById('bootScreen');
+        if (bs) { bs.style.bottom = 'auto'; bs.style.height = Math.max(window.innerHeight, full) + 'px'; }
+      }
+      fit();
+      document.addEventListener('DOMContentLoaded', fit);
+      window.addEventListener('resize', fit);
+      document.documentElement.classList.add('fd-standalone');
+      window.addEventListener('orientationchange', function () { setTimeout(fit, 300); });
+    })();
+
+    var APP_URL = 'https://script.google.com/macros/s/AKfycbzpZ0gNkVSjD0K0qikufG7K9Xi9bJ7c1OcV_BBD-K_VYwBvBOmUG8lh60oH-raWf1sQFg/exec';
+    var KEY_NAME = 'GHL_DEVICE_KEY';
+    var q = new URLSearchParams(location.search);
+    var key = q.get('k') || '';
+    if (key && key === window.__fdSignedOut) key = '';   // signed out on this device: the old key in the icon's address is not used
+    try { if (!key) key = localStorage.getItem(KEY_NAME) || ''; } catch (e) {}
+    document.getElementById('app').src = APP_URL + (key ? '?k=' + encodeURIComponent(key) : '');
+
+    // How much of the page Safari's bottom toolbar covers right now; the app lifts its bottom bar by this much
+    var insetTarget = null;
+    // iPhone Safari (not the home-screen app): Safari draws the page from the very top of the screen (under the
+    // status bar) and shows its toolbar over the bottom. The app is made as tall as the whole screen, so it also runs
+    // under the toolbar like any website, and is told how much the status bar (top) and toolbar (bottom) cover.
+    function iosSafari() { var c = document.documentElement.classList; return c.contains('fd-ios') && !c.contains('fd-standalone'); }
+    function fullScreenHeight() {
+      var portrait = window.matchMedia('(orientation: portrait)').matches;
+      return portrait ? Math.max(screen.width, screen.height) : Math.min(screen.width, screen.height);
+    }
+    function safeTop() { var d = document.createElement('div'); d.style.cssText = 'position:fixed;top:0;left:0;width:1px;visibility:hidden;height:env(safe-area-inset-top)'; document.body.appendChild(d); var h = d.getBoundingClientRect().height; d.remove(); return Math.round(h); }
+    function insets() {
+      if (!iosSafari()) return { top: 0, bottom: 0 };
+      // Measured on iPhone SE + 13 Pro (15 Oct): the page starts below the status bar and reaches the bottom of the
+      // screen = the largest page area Safari offers (100lvh) + its smallest toolbar (58). The app is made that tall
+      // (so it runs under the toolbar) and lifts its bottom bar by whatever the toolbar covers right now.
+      var lvh = document.getElementById('fdProbeL').getBoundingClientRect().height;
+      var pageH = Math.round(Math.min(lvh + 58, Math.max(fullScreenHeight(), lvh)));
+      var f = document.getElementById('app');
+      if (f) { f.style.height = pageH + 'px'; document.body.style.minHeight = pageH + 'px'; }
+      // the loading screen covers exactly what the app covers (it stopped at the visible part, leaving a band below)
+      var bs = document.getElementById('bootScreen');
+      if (bs) { bs.style.bottom = 'auto'; bs.style.height = (pageH + 160) + 'px'; }
+      var vis = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+      return { top: 0, bottom: Math.max(0, Math.round(pageH - vis)) };   // top: nothing extra (the page already starts below the status bar)
+    }
+    // Keyboard: tell the app which part of its screen is still visible above the keyboard (in the app's own coordinates),
+    // so an open sheet can sit right on top of the keyboard instead of being covered by it (21 Oct)
+    var lastKb = '';
+    function sendKb() {
+      var vv = window.visualViewport, fr = document.getElementById('app');
+      if (!vv || !fr || !insetTarget) return;
+      var r = fr.getBoundingClientRect();
+      var top = Math.round(vv.offsetTop - r.top), bottom = Math.round(vv.offsetTop + vv.height - r.top);
+      // iPhone: innerHeight shrinks with the keyboard (it never looked open) — compare with the page height, which stays put
+      var open = vv.height < Math.max(window.innerHeight, document.documentElement.clientHeight) * 0.8;
+      var key = open ? top + ',' + bottom : 'closed';
+      if (key === lastKb) return; lastKb = key;
+      try { insetTarget.w.postMessage({ type: 'ghl-kb', open: open, top: top, bottom: bottom }, insetTarget.o); } catch (e) {}
+    }
+    if (window.visualViewport) { window.visualViewport.addEventListener('resize', sendKb); window.visualViewport.addEventListener('scroll', sendKb); }
+    var lastInset = null;
+    function sendInset() {
+      // keyboard open: keep the last value (the visible area changes on every key while typing → the open form jumped)
+      if (lastInset && typeof keyboardUp === 'function' && keyboardUp()) return;
+      var i = insets();
+      if (lastInset && lastInset.bottom === i.bottom && lastInset.top === i.top) return;
+      lastInset = i;
+      document.documentElement.style.setProperty('--host-bottom', i.bottom + 'px');
+      if (insetTarget) { try { insetTarget.w.postMessage({ type: 'ghl-inset', bottom: i.bottom, top: i.top, homeScreen: document.documentElement.classList.contains('fd-ios') && document.documentElement.classList.contains('fd-standalone') }, insetTarget.o); } catch (e) {} }
+    }
+    window.addEventListener('resize', sendInset);
+    window.addEventListener('orientationchange', function () { setTimeout(sendInset, 300); });
+    // while the keyboard is up, iPhone moves the page to keep the field above it: leave that alone (pulling the page back
+    // on every key fought iPhone and made the screen flicker while typing the code); put it back once the keyboard closes
+    function keyboardUp() { var vv = window.visualViewport; return !!vv && vv.height < window.innerHeight * 0.8; }
+    function pinTop() { var c = document.documentElement.classList; if (!c.contains('fd-standalone') && !c.contains('fd-ios')) return; if (keyboardUp()) return; if (window.scrollY || window.scrollX || document.documentElement.scrollTop || document.body.scrollTop) { window.scrollTo(0, 0); document.documentElement.scrollTop = document.body.scrollTop = 0; } }
+    window.addEventListener('scroll', pinTop, { passive: true });
+    if (window.visualViewport) { window.visualViewport.addEventListener('resize', pinTop); window.visualViewport.addEventListener('scroll', pinTop); }
+    window.addEventListener('focusout', function () { setTimeout(pinTop, 50); setTimeout(pinTop, 400); });
+    if (window.visualViewport) window.visualViewport.addEventListener('resize', sendInset);
+    setTimeout(sendInset, 0);
+
+    function hideBoot() {
+      var h = document.documentElement;
+      h.classList.remove('fd-launch');
+      if (!h.classList.contains('boot') || h.classList.contains('fd-ready')) return;
+      h.classList.add('fd-ready');
+      setTimeout(function () { h.classList.remove('boot', 'boot-partner', 'fd-ready'); }, 300);
+    }
+    setTimeout(hideBoot, 45000);   // safety net: never cover the app for ever
+
+    function fdApplyBg(bg) {
+      var fdTheme = /^#(f2f2f7|f5f5f7)$/i.test(bg) ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', fdTheme);
+      window.__fdTheme = fdTheme;
+      if (window.__fdShown) { try { localStorage.setItem('GHL_FD_THEME', fdTheme); } catch (err) {} }
+      document.documentElement.style.background = document.body.style.background = bg;
+      document.querySelectorAll('meta[name="theme-color"]').forEach(function (m) { m.setAttribute('content', bg); });
+    }
+    window.addEventListener('message', function (e) {
+      // only messages from the app itself (Google's script domains)
+      if (!/^https:\/\/([a-z0-9-]+\.)*(script\.google\.com|googleusercontent\.com)$/.test(e.origin)) return;
+      var d = e.data || {};
+      if (d.type === 'ghl-theme') {   // match the app's background, also behind the status bar and Safari's toolbar
+        if (!/^#[0-9a-fA-F]{6}$/.test(d.bg || '')) return;
+        // while the app is still loading it can report a passing theme (its own default before your saved choice arrives),
+        // which flashed the loading screen dark → light: keep the theme remembered from last time until the app is showing
+        if (!window.__fdShown && window.__fdSavedTheme) { window.__fdPendingBg = d.bg; return; }
+        fdApplyBg(d.bg);
+        return;
+      }
+      if (d.type === 'ghl-cache-save') {   // last data (compressed), so the app can show it at once next time
+        try {
+          if (!d.data || !d.who) localStorage.removeItem('GHL_DATA');
+          else localStorage.setItem('GHL_DATA', JSON.stringify({ who: String(d.who), t: Date.now(), data: String(d.data) }));
+        } catch (err) { try { localStorage.removeItem('GHL_DATA'); } catch (e2) {} }
+        return;
+      }
+      if (d.type === 'ghl-cache-get') {
+        var saved = null;
+        try { saved = JSON.parse(localStorage.getItem('GHL_DATA') || 'null'); } catch (err) {}
+        var ok = saved && saved.who === String(d.who || '') && (Date.now() - saved.t) < 30 * 24 * 3600 * 1000;
+        try { e.source.postMessage({ type: 'ghl-cache', who: ok ? saved.who : '', data: ok ? saved.data : '' }, e.origin); } catch (err) {}
+        return;
+      }
+      // the app itself, kept compressed with its fingerprint (the app checks the fingerprint before using it)
+      if (d.type === 'ghl-app-get') {
+        var app = null;
+        try { app = JSON.parse(localStorage.getItem('GHL_APP') || 'null'); } catch (err) {}
+        try { e.source.postMessage({ type: 'ghl-app', fp: app && app.fp || '', data: app && app.data || '' }, e.origin); } catch (err) {}
+        return;
+      }
+      if (d.type === 'ghl-app-save') {
+        if (!/^[0-9a-f]{64}$/.test(String(d.fp || '')) || typeof d.data !== 'string' || d.data.length > 3000000) return;
+        try { localStorage.setItem('GHL_APP', JSON.stringify({ fp: d.fp, data: d.data })); }
+        catch (err) { try { localStorage.removeItem('GHL_APP'); } catch (e2) {} }
+        return;
+      }
+      // the app scrolled the field being typed in to the top of its sheet: undo the page shift iOS made to reveal it
+      if (d.type === 'ghl-page') {   // the page the app is on: the loading screen on the next start has its shape
+        var pv = String(d.page || '').slice(0, 60);
+        try { if (pv) { sessionStorage.setItem('GHL_FD_PAGE', pv); localStorage.setItem('GHL_FD_PAGE', JSON.stringify({ page: pv, t: Date.now() })); } else { sessionStorage.removeItem('GHL_FD_PAGE'); localStorage.removeItem('GHL_FD_PAGE'); } } catch (e) {}
+        if (pv && d.tb && typeof d.tb === 'object') { try { var tbm = JSON.parse(localStorage.getItem('GHL_FD_TB') || '{}') || {}; tbm[pv] = d.tb; localStorage.setItem('GHL_FD_TB', JSON.stringify(tbm)); } catch (e) {} }   // each page's toolbar shape
+        return;
+      }
+      if (d.type === 'ghl-pin') {
+        if (window.scrollY || window.scrollX || document.documentElement.scrollTop || document.body.scrollTop) { window.scrollTo(0, 0); document.documentElement.scrollTop = document.body.scrollTop = 0; }
+        return;
+      }
+      if (d.type === 'ghl-inset-request') { insetTarget = { w: e.source, o: e.origin }; lastInset = null; sendInset(); return; }
+      if (d.type === 'ghl-ready') {
+        if (d.role === 'admin' || d.role === 'partner') { try { localStorage.setItem('GHL_FD_ROLE', d.role); } catch (err) {} }
+        window.__fdShown = true;
+        if (window.__fdPendingBg) { fdApplyBg(window.__fdPendingBg); window.__fdPendingBg = ''; }   // the app's real theme, now it is showing
+        if (window.__fdTheme) { try { localStorage.setItem('GHL_FD_THEME', window.__fdTheme); } catch (err) {} }
+        hideBoot();
+        return;
+      }
+      if (d.type !== 'ghl-device-key') return;
+      var k = typeof d.key === 'string' ? d.key : '';
+      try {
+        if (k) { localStorage.setItem(KEY_NAME, k); localStorage.removeItem('GHL_SIGNED_OUT_KEY'); }
+        else {   // signed out: remember which key that was (the home-screen icon may still carry it)
+          var old = localStorage.getItem(KEY_NAME) || new URLSearchParams(location.search).get('k') || '';
+          if (old) localStorage.setItem('GHL_SIGNED_OUT_KEY', old);
+          localStorage.removeItem(KEY_NAME);
+          localStorage.removeItem('GHL_APP');   // the next person may get the other app (admin / partner)
+        }
+      } catch (err) {}
+      var dbg = /[?&]debug=1/.test(location.search) ? 'debug=1' : '';   // keep the measuring panel when the key is saved
+      var qs = [k ? 'k=' + encodeURIComponent(k) : '', dbg].filter(Boolean).join('&');
+      history.replaceState(null, '', location.pathname + (qs ? '?' + qs : ''));
+    });
+  </script>
+  <script>
+    // Measuring panel for iPhone Safari layout (only with ?debug=1 in the address): sizes the page sees.
+    (function () {
+      if (!/[?&]debug=1/.test(location.search)) return;
+      var box = document.createElement('div');
+      box.style.cssText = 'position:fixed;left:8px;right:8px;top:40%;z-index:99999;background:rgba(255,0,0,.85);color:#fff;font:12px/1.4 -apple-system,monospace;padding:10px;border-radius:10px;white-space:pre-wrap;pointer-events:none';
+      var probe = function (css) { var d = document.createElement('div'); d.style.cssText = 'position:fixed;left:0;top:0;width:1px;visibility:hidden;' + css; document.body.appendChild(d); var h = d.getBoundingClientRect().height; d.remove(); return Math.round(h); };
+      function show() {
+        var f = document.getElementById('app').getBoundingClientRect(), vv = window.visualViewport;
+        box.textContent = 'innerHeight ' + innerHeight + '  outer ' + outerHeight + '  screen ' + screen.height +
+          '\nvh ' + probe('height:100vh') + '  lvh ' + probe('height:100lvh') + '  dvh ' + probe('height:100dvh') + '  svh ' + probe('height:100svh') +
+          '\nsafe top ' + probe('height:env(safe-area-inset-top)') + '  safe bottom ' + probe('height:env(safe-area-inset-bottom)') +
+          '\nvisualViewport ' + (vv ? Math.round(vv.height) + ' (offset ' + Math.round(vv.offsetTop) + ')' : '-') +
+          '\nframe top ' + Math.round(f.top) + '  height ' + Math.round(f.height) + '  bottom ' + Math.round(f.bottom) +
+          '\nscrollY ' + Math.round(scrollY) + '  docHeight ' + document.documentElement.scrollHeight +
+          '\nbody ' + Math.round(document.body.getBoundingClientRect().height) + '  html ' + Math.round(document.documentElement.getBoundingClientRect().height) +
+          '\nclasses ' + document.documentElement.className;
+      }
+      document.body.appendChild(box); show();
+      setInterval(show, 1000);
+    })();
+  </script>
+
+  <div id="stgRibbon" style="position:fixed;left:50%;transform:translateX(-50%);top:calc(env(safe-area-inset-top,0px) + 2px);z-index:2147483000;font:700 10px/1 -apple-system,system-ui,sans-serif;letter-spacing:.06em;background:#ff9500;color:#000;padding:3px 9px;border-radius:999px;pointer-events:none;opacity:.95">STAGING · same data as live</div>
+  <script>
+    /* new-UI switch: ?newui=1 / ?newui=0 on this page (remembered), sent to the app when it asks (ghl-inset-request) and now */
+    (function () {
+      var q = new URLSearchParams(location.search).get('newui');
+      try { if (q === '0' || q === '1') localStorage.setItem('GHL_FD_NEWUI', q); } catch (e) {}
+      var on = function () { try { return localStorage.getItem('GHL_FD_NEWUI') !== '0'; } catch (e) { return true; } };   // staging defaults to the NEW ui; ?newui=0 shows the old one
+      window.addEventListener('message', function (e) {
+        var d = e.data || {}; if (e.origin.indexOf('googleusercontent.com') === -1 && e.origin.indexOf('script.google.com') === -1) return;
+        if (d.type === 'ghl-inset-request') { try { e.source.postMessage({ type: 'ghl-newui', on: on() }, e.origin); } catch (x) {} }
+      });
+    })();
+    /* minimal service worker: caches ONLY this shell page, manifest, icons (never the app, never Google). Off with ?sw=off */
+    (function () {
+      if (!('serviceWorker' in navigator)) return;
+      if (new URLSearchParams(location.search).get('sw') === 'off') { navigator.serviceWorker.getRegistrations().then(function (rs) { rs.forEach(function (r) { r.unregister(); }); }); caches && caches.keys().then(function (ks) { ks.forEach(function (k) { if (k.indexOf('stg-shell') === 0) caches.delete(k); }); }); return; }
+      navigator.serviceWorker.register('sw.js').catch(function () {});
+    })();
+  </script>
+</body>
+</html>
