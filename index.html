@@ -744,7 +744,7 @@
       m.addEventListener('click', function (e) {
         var a = e.target.getAttribute && e.target.getAttribute('data-a'); if (e.target === m) a = 'close'; if (!a) return;
         if (a === 'close') { m.style.display = 'none'; return; }
-        if (a === 'test') { m.style.display = 'none'; setTimeout(function () { try { document.getElementById('app').contentWindow.postMessage({ type: 'ghl-test', name: 'tabs' }, '*'); } catch (x) {} }, 1500); return; }
+        if (a === 'test') { m.style.display = 'none'; setTimeout(function () { try { if (typeof insetTarget !== 'undefined' && insetTarget) insetTarget.w.postMessage({ type: 'ghl-test', name: 'tabs' }, insetTarget.o); } catch (x) {} }, 1500); return; }
         if (a === 'toggle') { try { localStorage.setItem('GHL_FD_NEWUI', on() ? '0' : '1'); } catch (x) {} var f = document.getElementById('app'); try { f.contentWindow.postMessage({ type: 'ghl-newui', on: on() }, '*'); } catch (x) {} paint(); setTimeout(function () { location.reload(); }, 150); }
         if (a === 'reload') { (navigator.serviceWorker ? navigator.serviceWorker.getRegistrations().then(function (rs) { return Promise.all(rs.map(function (r) { return r.unregister(); })); }) : Promise.resolve()).then(function () { return window.caches ? caches.keys().then(function (ks) { return Promise.all(ks.map(function (k) { return caches.delete(k); })); }) : 0; }).then(function () { location.replace(location.pathname + '?t=' + Date.now()); }); }
       });
