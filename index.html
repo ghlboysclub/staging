@@ -569,9 +569,9 @@
       var top = Math.round(vv.offsetTop - r.top), bottom = Math.round(vv.offsetTop + vv.height - r.top);
       // iPhone: innerHeight shrinks with the keyboard (it never looked open) — compare with the page height, which stays put
       var open = vv.height < Math.max(window.innerHeight, document.documentElement.clientHeight) * 0.8;
-      var key = open ? top + ',' + bottom : 'closed';
+      var key = open ? top + ',' + bottom + ',' + (vv.scale || 1) : 'closed';
       if (key === lastKb) return; lastKb = key;
-      try { insetTarget.w.postMessage({ type: 'ghl-kb', open: open, top: top, bottom: bottom }, insetTarget.o); } catch (e) {}
+      try { insetTarget.w.postMessage({ type: 'ghl-kb', open: open, top: top, bottom: bottom, scale: (window.visualViewport ? Math.round(window.visualViewport.scale * 100) / 100 : 1) }, insetTarget.o); } catch (e) {}
     }
     if (window.visualViewport) { window.visualViewport.addEventListener('resize', sendKb); window.visualViewport.addEventListener('scroll', sendKb); }
     var lastInset = null;
